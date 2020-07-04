@@ -3,16 +3,24 @@ import React from "react"
 import { useState, useRef, useEffect } from "react"
 import PropTypes from "prop-types"
 
-import { VideoWrapper, VideoControls, BottomControls } from "./video.styles"
-
 import {
-  MdPlayCircleOutline,
-  MdPauseCircleOutline,
-  MdVolumeMute,
-  MdVolumeUp,
-} from "react-icons/md"
+  VideoWrapper,
+  VideoControls,
+  BottomControls,
+  VideoMain,
+} from "./video.styles"
+import VideoLoader from "./VideoLoader"
+import { MdPlayArrow, MdPause, MdVolumeOff, MdVolumeUp } from "react-icons/md"
+import { MediaButton } from "./media.styles"
 
-const Video = ({ video, autoplay, hideControls, active = false }) => {
+const Video = ({
+  video,
+  hideControls,
+  autoplay = false,
+  active = false,
+  format,
+}) => {
+  const { file } = video
   const videoElement = useRef(null)
   const [state, setState] = useState({
     playing: false,
@@ -117,53 +125,61 @@ const Video = ({ video, autoplay, hideControls, active = false }) => {
   const { playing, loading, muted } = state
   return (
     <VideoWrapper>
-      {autoplay ? (
-        <video
-          playsInline
-          loop
-          muted
-          autoPlay
-          ref={videoElement}
-          preload="auto"
-          src={video.file.asset.url}
-          className="video"
-        />
-      ) : (
-        <video
-          playsInline
-          ref={videoElement}
-          preload="auto"
-          src={video.file.asset.url}
-          className="video"
-        />
-      )}
+      <VideoMain>
+        {autoplay ? (
+          <video
+            playsInline
+            loop
+            muted
+            autoPlay
+            ref={videoElement}
+            preload="auto"
+            src={file.asset.url}
+            className="video"
+          />
+        ) : (
+          <video
+            playsInline
+            ref={videoElement}
+            preload="auto"
+            src={file.asset.url}
+            className="video"
+          />
+        )}
 
-      {loading ? (
-        <div>loading...</div>
-      ) : hideControls ? null : (
-        <VideoControls>
-          <div className="video-btn" onClick={ToggleVideo}>
-            {!playing && (
-              <div className="play">
-                <MdPlayCircleOutline color={"#fff"} />
-              </div>
+        {loading ? (
+          <VideoLoader></VideoLoader>
+        ) : hideControls ? null : (
+          <VideoControls>
+            <div className="video-btn" onClick={ToggleVideo}>
+              {!playing && (
+                <MediaButton>
+                  <MdPlayArrow color="#FFF" />
+                </MediaButton>
+              )}
+            </div>
+          </VideoControls>
+        )}
+      </VideoMain>
+      {!hideControls && (
+        <BottomControls playing={playing}>
+          <div onClick={ToggleVideo}>
+            <MediaButton>
+              <MdPause color="#FFF" />
+            </MediaButton>
+          </div>
+          <div onClick={toggleSound} className="volume">
+            {muted ? (
+              <MediaButton>
+                <MdVolumeUp color="#FFF" />
+              </MediaButton>
+            ) : (
+              <MediaButton>
+                <MdVolumeOff color="#FFF" />
+              </MediaButton>
             )}
           </div>
-          {playing && (
-            <BottomControls>
-              <div className="pause" onClick={ToggleVideo}>
-                <MdPauseCircleOutline color={"#FFF"} />
-              </div>
-              <div onClick={toggleSound} className="volume">
-                {muted ? (
-                  <MdVolumeMute color="#FFF" />
-                ) : (
-                  <MdVolumeUp color="#FFF" />
-                )}
-              </div>
-            </BottomControls>
-          )}
-        </VideoControls>
+        </BottomControls>
       )}
     </VideoWrapper>
   )

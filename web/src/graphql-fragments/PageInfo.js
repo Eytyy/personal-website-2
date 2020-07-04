@@ -4,6 +4,6 @@ export const PageInfo = graphql`
   fragment PageInfo on SanityPage {
     id
     title
-    _rawContent(resolveReferences: { maxDepth: 10 })
+    _rawContent(resolveReferences: { maxDepth: 15 })
   }
 `

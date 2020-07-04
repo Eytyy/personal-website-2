@@ -18,6 +18,14 @@ export default {
       description: "Add, edit, and reorder sections",
       of: [
         {
+          title: "Simple Content Block",
+          type: "contentBlockSimple",
+        },
+        {
+          title: "Content Block",
+          type: "contentBlock",
+        },
+        {
           title: "Content List",
           type: "contentList",
         },

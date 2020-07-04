@@ -6,6 +6,7 @@ export const fonts = {
 export const layout = {
   gutter_mobile: 20,
   gutter_desktop: 40,
+  headerHeight: "135px",
 }
 
 export const colors = {

@@ -22,7 +22,7 @@ export const query = graphql`
 `
 
 const PageTemplate = props => {
-  const { data, errors } = props
+  const { data, errors, location } = props
 
   if (errors) {
     return <GraphQLErrorList errors={errors} />
@@ -31,11 +31,10 @@ const PageTemplate = props => {
   const page = data.route.page
   const seoSettings = data.route.openGraph
   const pageTitle = data.route.openGraph.title || page.title
-
   return (
     <>
       <SEO {...seoSettings} title={pageTitle} />
-      <Page data={page} />
+      <Page data={page} location={location} />
     </>
   )
 }

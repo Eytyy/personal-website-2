@@ -1,6 +1,6 @@
 import styled from "@emotion/styled"
 import { css } from "@emotion/core"
-import { mq, wrap } from "../styles/utils"
+import { mq, wrap } from "../../styles/utils"
 
 export const GalleryWrapper = styled.div`
   position: relative;
@@ -40,21 +40,32 @@ const GalleryBtnDefaultStyles = () => css`
   visibility: hidden;
   z-index: 2;
   opacity: 0;
+  width: 45px;
+  height: 45px;
+  background: blue;
+  border-radius: 100%;
   transition: opacity 200ms linear;
   &.visible {
     opacity: 1;
     visibility: visible;
   }
+  transition: 0.3s;
 `
 
 export const GalleryNextBtn = styled.div`
   ${GalleryBtnDefaultStyles}
-  right: 0;
-  transform: translate(100%, -50%);
+  right: 0px;
+  transform: translate(0%, -50%);
+  :hover {
+    transform: scale(1.2) translate(0, -50%);
+  }
 `
 
 export const GalleryPrevBtn = styled.div`
   ${GalleryBtnDefaultStyles}
-  transform: translate(-100%, -50%);
   left: 0;
+  transform: translate(0, -50%);
+  :hover {
+    transform: scale(1.2) translate(0, -50%);
+  }
 `

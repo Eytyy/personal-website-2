@@ -11,7 +11,7 @@ import {
 import Figure from "./figure"
 import Video from "./video"
 
-const Gallery = ({ slides }) => {
+const Gallery = ({ slides, ...props }) => {
   const initialState = slides.length > 1 ? [slides[0], slides[1]] : [slides[0]]
   const [visibleSlides, updateVisibleSlides] = React.useState(initialState)
 
@@ -37,16 +37,16 @@ const Gallery = ({ slides }) => {
   return safeSlides.length > 0 ? (
     <GalleryWrapper>
       <Slides>
-        {safeSlides.map(({ _key, __typename, ...props }, index) => {
+        {safeSlides.map(({ _key, _type, ...fields }, index) => {
           return (
             <Slide
               key={_key}
               className={index === activeIndex ? "active" : "inactive"}
             >
-              {__typename === "SanityFigure" ? (
-                <Figure image={props} />
+              {_type === "figure" ? (
+                <Figure image={fields} {...props} />
               ) : (
-                <Video {...props} />
+                <Video {...fields} {...props} />
               )}
             </Slide>
           )
@@ -56,18 +56,14 @@ const Gallery = ({ slides }) => {
         <GalleryPrevBtn
           className={`${activeIndex > 0 ? "visible" : "hidden"}`}
           onClick={previousSlide}
-        >
-          <MdKeyboardArrowLeft color={"#000"} />
-        </GalleryPrevBtn>
+        ></GalleryPrevBtn>
 
         <GalleryNextBtn
           className={`${
             activeIndex < slides.length - 1 ? "visible" : "hidden"
           }`}
           onClick={nextSlide}
-        >
-          <MdKeyboardArrowRight color={"#000"} />
-        </GalleryNextBtn>
+        ></GalleryNextBtn>
       </div>
     </GalleryWrapper>
   ) : null

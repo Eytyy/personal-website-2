@@ -1,12 +1,16 @@
 import styled from "@emotion/styled"
+import { mq } from "../../styles/utils"
+import { css } from "@emotion/core"
 
 export const VideoWrapper = styled.div`
-  position: relative;
-
   video {
     width: 100%;
     height: auto;
   }
+`
+
+export const VideoMain = styled.div`
+  position: relative;
 `
 
 export const VideoCaption = styled.div`
@@ -26,28 +30,39 @@ export const VideoControls = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 2;
-  cursor: pointer;
-  font-size: 10rem;
-
   .video-btn {
     display: block;
-    font-size: 10rem;
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
   }
 `
 
+const showBottomControls = css`
+  height: auto;
+  opacity: 1;
+  margin-top: 40px;
+`
+const hideBottomControls = css`
+  margin-top: 0;
+  height: 0;
+  overflow: hidden;
+  opacity: 0;
+`
+
 export const BottomControls = styled.div`
-  font-size: 5rem;
-  position: absolute;
-  bottom: 0;
-  left: 0;
+  transition: 1s;
+  ${props => (props.playing ? showBottomControls : hideBottomControls)}
   width: 100%;
   z-index: 2;
-  padding: 0.5em;
   display: flex;
   justify-content: space-between;
+  padding: 0px 40px;
+
+  ${mq.tablet} {
+    padding: 0;
+  }
 `

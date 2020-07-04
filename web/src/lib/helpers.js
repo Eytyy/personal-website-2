@@ -12,8 +12,27 @@ export function filterOutDocsPublishedInTheFuture({ publishedAt }) {
   return !isFuture(publishedAt)
 }
 
-export function getBlogUrl(slug) {
-  return `/blog/${slug.current || slug}/`
+export const getURL = ({ _type, slug }) => {
+  let basePath
+  switch (_type) {
+    case "project":
+      basePath = "/work/"
+      break
+    case "post":
+      basePath = "/blog/"
+      break
+    default:
+      basePath = "/"
+      break
+  }
+  return `${basePath}${slug}`
+}
+
+export const splitTitle = title => {
+  const formatedTitle = title.match(/<br>/)
+    ? title.split("<br>").map(line => line.trim())
+    : title
+  return formatedTitle
 }
 
 export function buildImageObj(source = { asset: {} }) {

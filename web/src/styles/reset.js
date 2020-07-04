@@ -32,6 +32,9 @@ export default css`
     margin: 0;
   }
 
+  p {
+    margin: 0 0 1.5em;
+  }
   header,
   video,
   article,

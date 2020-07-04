@@ -1,8 +1,8 @@
 import { FiExternalLink } from "react-icons/fi";
 
 export default {
-  title: "Block Content",
-  name: "blockContent",
+  title: "Simple Block Content",
+  name: "blockContentSimple",
   type: "array",
   of: [
     {
@@ -60,9 +60,6 @@ export default {
           },
         ],
       },
-    },
-    {
-      type: "figure",
     },
   ],
 };

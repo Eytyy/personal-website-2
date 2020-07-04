@@ -7,10 +7,6 @@ export const SanityVideoEmbed = graphql`
     posterFrame {
       ...SanityFigure
     }
-    muted
-    loop
-    preload
-    autoplay
     video {
       file {
         asset {
@@ -18,6 +14,11 @@ export const SanityVideoEmbed = graphql`
         }
       }
       url
+      muted
+      loop
+      preload
+      autoplay
+      format
     }
   }
 `

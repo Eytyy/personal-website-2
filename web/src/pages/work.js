@@ -12,7 +12,7 @@ export const query = graphql`
       nodes {
         _id
         title
-        _rawBody
+        _rawDescription
         slug {
           current
         }

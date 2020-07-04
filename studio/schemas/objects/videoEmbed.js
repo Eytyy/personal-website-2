@@ -4,16 +4,7 @@ export default {
   type: "object",
   name: "videoEmbed",
   title: "Video",
-  fieldsets: [
-    {
-      name: "settings",
-      title: "Settings",
-      options: {
-        collapsible: true,
-        collapsed: true,
-      },
-    },
-  ],
+
   preview: {
     select: {
       title: "title",
@@ -41,51 +32,7 @@ export default {
         hotspot: true,
       },
     },
-    {
-      name: "muted",
-      title: "Muted",
-      description: "Must be true if autoplay",
-      type: "boolean",
-      fieldset: "settings",
-    },
-    {
-      name: "loop",
-      title: "Loop",
-      type: "boolean",
-      fieldset: "settings",
-    },
-    {
-      name: "preload",
-      title: "Preload",
-      type: "string",
-      fieldset: "settings",
-      options: {
-        list: ["auto", "none", "metadata"],
-      },
-    },
-    {
-      name: "autoplay",
-      title: "Auto play",
-      type: "string",
-      fieldset: "settings",
-      options: {
-        layout: "radio",
-        list: [
-          {
-            title: "None",
-            value: "off",
-          },
-          {
-            title: "Always",
-            value: "on",
-          },
-          {
-            title: "When in viewport",
-            value: "viewport",
-          },
-        ],
-      },
-    },
+
     {
       name: "video",
       title: "Video",

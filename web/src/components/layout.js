@@ -6,6 +6,8 @@ import Global from "../styles/Global.js"
 import { LayoutWrapper } from "../styles/layout"
 
 import Header from "./header"
+import { css } from "@emotion/core"
+import { spacing } from "../styles/utils.js"
 
 export const query = graphql`
   query SiteTitleQuery {
@@ -16,18 +18,15 @@ export const query = graphql`
     }
   }
 `
-const Layout = ({ children }) => {
+const Layout = ({ children, location }) => {
   const data = useStaticQuery(query)
 
   return (
     <>
       <Global />
       <LayoutWrapper>
-        <Header siteTitle={data.site.siteMetadata.title} />
-        <div>
-          <main>{children}</main>
-          <footer>🥴 © {new Date().getFullYear()}</footer>
-        </div>
+        <Header location={location} siteTitle={data.site.siteMetadata.title} />
+        <main>{children}</main>
       </LayoutWrapper>
     </>
   )
