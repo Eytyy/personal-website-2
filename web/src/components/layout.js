@@ -6,8 +6,6 @@ import Global from "../styles/Global.js"
 import { LayoutWrapper } from "../styles/layout"
 
 import Header from "./header"
-import { css } from "@emotion/core"
-import { spacing } from "../styles/utils.js"
 
 export const query = graphql`
   query SiteTitleQuery {

@@ -36,7 +36,7 @@ const Header = ({ siteTitle, location }) => {
           {siteTitle}
         </h1>
         <MainNavigation>
-          {location.pathname !== "/" && (
+          {location && location.pathname !== "/" && (
             <NavigationItem>
               <Link to="/">&larr;</Link>
             </NavigationItem>
