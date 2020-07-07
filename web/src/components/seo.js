@@ -5,8 +5,6 @@ import { useStaticQuery, graphql } from "gatsby"
 import { imageUrlFor } from "../lib/image-url"
 import { buildImageObj } from "../lib/helpers"
 
-// https://ogp.me
-
 const detailsQuery = graphql`
   query DefaultSEOQuery {
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
@@ -27,9 +25,7 @@ function SEO({ description, lang, meta, keywords, title, image, bodyAttr }) {
   const defaultSEO = data.site.openGraph
 
   const metaDescription = description || defaultSEO.description || ""
-
   const siteTitle = data.site.title || ""
-
   const siteAuthor = (data.site.author && data.site.author.name) || ""
 
   const metaImage =
@@ -50,7 +46,7 @@ function SEO({ description, lang, meta, keywords, title, image, bodyAttr }) {
       meta={[
         {
           name: "google-site-verification",
-          content: "7MfJFsxBVui5UlEBExUFeMW9-Q6g9fPgoaxwzvbqaV0",
+          content: "0lKhCdwNONIB0NIwPB7mPYMG6udUJ7yxhswBsP28Z0M",
         },
         {
           name: "description",

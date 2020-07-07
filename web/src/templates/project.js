@@ -42,6 +42,14 @@ export const query = graphql`
       _rawDescription(resolveReferences: { maxDepth: 10 })
       _rawSections(resolveReferences: { maxDepth: 10 })
       role
+      mainMedia {
+        ... on SanityVideoEmbed {
+          ...SanityVideoEmbed
+        }
+        ... on SanityFigure {
+          ...SanityFigure
+        }
+      }
       links {
         _key
         name
@@ -73,13 +81,8 @@ export const query = graphql`
           }
         }
       }
-      mainMedia {
-        ... on SanityVideoEmbed {
-          ...SanityVideoEmbed
-        }
-        ... on SanityFigure {
-          ...SanityFigure
-        }
+      openGraph {
+        ...OpenGraph
       }
     }
   }
@@ -87,12 +90,15 @@ export const query = graphql`
 const ProjectTemplate = ({ data, errors }) => {
   const project = data && data.project
   const next = data && data.next.nodes[0]
+  const seoSettings = project.openGraph
+
   if (errors) {
     return <GraphQLErrorList errors={errors} />
   }
+
   return (
     <>
-      <SEO title={project.title || "Untitled"} description={"hof"} />
+      <SEO {...seoSettings} />
       <Project next={next} {...project} />
     </>
   )

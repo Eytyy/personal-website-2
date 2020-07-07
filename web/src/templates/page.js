@@ -31,6 +31,7 @@ const PageTemplate = props => {
   const page = data.route.page
   const seoSettings = data.route.openGraph
   const pageTitle = data.route.openGraph.title || page.title
+
   return (
     <>
       <SEO {...seoSettings} title={pageTitle} />
