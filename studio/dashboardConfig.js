@@ -8,15 +8,13 @@ export default {
           {
             title: 'Sanity Studio',
             apiID: 'd4446b0c-e793-4fca-b176-edae345793f3',
-            buildHookId:
-              'https://api.netlify.com/build_hooks/5f1707f0b29d2149c38cd40d',
+            buildHookId: '5f1707f0b29d2149c38cd40d',
             name: 'eytyy-studio',
           },
           {
             title: 'Website',
             apiID: '6e370629-1002-46eb-875a-ab480ce22574',
-            buildHookId:
-              'https://api.netlify.com/build_hooks/5f1708cf1a564e295830da48',
+            buildHookId: '5f1708cf1a564e295830da48',
             name: 'eytyy',
           },
         ],
