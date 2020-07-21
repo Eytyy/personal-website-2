@@ -24,18 +24,19 @@ function SEO({ description, lang, meta, keywords, title, image, bodyAttr }) {
   const data = useStaticQuery(detailsQuery)
   const defaultSEO = data.site.openGraph
 
-  const metaDescription = description || defaultSEO.description || ""
+  const metaDescription =
+    description || (defaultSEO && defaultSEO.description) || ""
   const siteTitle = data.site.title || ""
   const siteAuthor = (data.site.author && data.site.author.name) || ""
 
   const metaImage =
     image && image.asset
       ? imageUrlFor(buildImageObj(image)).width(1200).url()
-      : defaultSEO.image && defaultSEO.image.asset
+      : defaultSEO && defaultSEO.image && defaultSEO.image.asset
       ? imageUrlFor(buildImageObj(defaultSEO.image)).width(1200).url()
       : ""
 
-  const pageTitle = title || defaultSEO.title || siteTitle
+  const pageTitle = title || (defaultSEO && defaultSEO.title) || siteTitle
 
   return (
     <Helmet
