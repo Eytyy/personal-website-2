@@ -3,7 +3,6 @@ import { Grid } from "../../styles/layout"
 import { mq, spacing } from "../../styles/utils"
 import { H2, Body } from "../../styles/typography"
 import { css } from "@emotion/core"
-import { layout } from "../../styles/vars"
 
 export const ProjectSectionGrid = styled(Grid)`
   ${mq.desktop} {

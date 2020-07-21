@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/media-has-caption */
 import React from "react"
 import { useState, useRef, useEffect } from "react"
-import PropTypes from "prop-types"
 
 import {
   VideoWrapper,
@@ -13,13 +12,7 @@ import VideoLoader from "./VideoLoader"
 import { MdPlayArrow, MdPause, MdVolumeOff, MdVolumeUp } from "react-icons/md"
 import { MediaButton } from "./media.styles"
 
-const Video = ({
-  video,
-  hideControls,
-  autoplay = false,
-  active = false,
-  format,
-}) => {
+const Video = ({ video, hideControls, autoplay = false, active = false }) => {
   const { file } = video
   const videoElement = useRef(null)
   const [state, setState] = useState({

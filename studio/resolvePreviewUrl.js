@@ -1,24 +1,22 @@
-const env = process.env.NODE_ENV || "development";
+const env = process.env.NODE_ENV || 'development';
 
 export default function resolvePreviewUrl(document) {
   const baseUrl =
-    env === "development"
-      ? "http://localhost:8000"
-      : "https://sanity-kitchen-sink-2-web-x1xf7gzm.netlify.app";
+    env === 'development' ? 'http://localhost:8000' : 'https://www.eytyy.com';
   switch (document._type) {
-    case "route":
+    case 'route':
       if (!document.slug || !document.slug.current) {
         return baseUrl;
       }
       return `${baseUrl}/${document.slug.current}`;
-    case "post":
+    case 'post':
       return `${baseUrl}/blog/${document.slug.current}`;
-    case "project":
+    case 'project':
       return `${baseUrl}/work/${document.slug.current}`;
-    case "siteSettings":
+    case 'siteSettings':
       return baseUrl;
-    case "page":
-      if (document._id === "frontpage" || document._id === "drafts.frontpage") {
+    case 'page':
+      if (document._id === 'frontpage' || document._id === 'drafts.frontpage') {
         return baseUrl;
       }
       return null;

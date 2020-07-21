@@ -4,7 +4,7 @@
     "name": "sanity-gatsby-starter"
   },
   "api": {
-    "projectId": "9q5hy7lk",
+    "projectId": "ky5p4eno",
     "dataset": "production"
   },
   "plugins": [
@@ -21,9 +21,7 @@
   ],
   "env": {
     "development": {
-      "plugins": [
-        "@sanity/vision"
-      ]
+      "plugins": ["@sanity/vision"]
     }
   },
   "parts": [

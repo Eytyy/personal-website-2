@@ -1,6 +1,5 @@
 import React, { useState } from "react"
 import PropTypes from "prop-types"
-import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from "react-icons/md"
 import {
   GalleryWrapper,
   Slides,

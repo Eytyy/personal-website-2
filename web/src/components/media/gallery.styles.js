@@ -1,6 +1,5 @@
 import styled from "@emotion/styled"
 import { css } from "@emotion/core"
-import { mq, wrap } from "../../styles/utils"
 
 export const GalleryWrapper = styled.div`
   position: relative;

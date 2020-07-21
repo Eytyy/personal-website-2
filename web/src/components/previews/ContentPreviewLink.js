@@ -1,25 +1,15 @@
-/** @jsx jsx */
+import React from "react"
 import Figure from "../media/figure"
 import Video from "../media/video"
 import {
   ExternalLinkLabel,
-  BigTitle,
   SmallTitle,
   PreviewLink,
 } from "./ContentPreview.styles"
 import ExternalLink from "../ExternalLink"
-import { css, jsx } from "@emotion/core"
 
-const ContentPreviewLink = ({
-  preview,
-  title,
-  displayType,
-  link,
-  role,
-  ...props
-}) => {
+const ContentPreviewLink = ({ preview, title, displayType, link, role }) => {
   const previewTitle = (preview && preview.title) || title
-  const hasMedia = preview && (preview.figure || preview.video)
 
   return (
     <PreviewLink>

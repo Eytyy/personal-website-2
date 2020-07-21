@@ -1,7 +1,6 @@
 import { Link, useStaticQuery, graphql } from "gatsby"
 import React from "react"
 import CTALink from "./CTALink"
-import { MdSentimentSatisfied } from "react-icons/md"
 import {
   HeaderWrapper,
   HeaderInner,

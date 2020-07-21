@@ -1,18 +1,19 @@
 import React from "react"
-import { Link, navigate } from "gatsby"
+// import { Link, navigate } from "gatsby"
+import { Link } from "gatsby"
 import { NavigationItem } from "./header.styles"
 
-const doNavigate = target => {
-  if (!target || !target.length) {
-    return
-  }
-  const internal = /^\/(?!\/)/.test(target)
-  if (internal) {
-    navigate(target)
-  } else {
-    window.location = target
-  }
-}
+// const doNavigate = target => {
+//   if (!target || !target.length) {
+//     return
+//   }
+//   const internal = /^\/(?!\/)/.test(target)
+//   if (internal) {
+//     navigate(target)
+//   } else {
+//     window.location = target
+//   }
+// }
 
 const CTALink = props => {
   let link = props.route || props.link || "#"

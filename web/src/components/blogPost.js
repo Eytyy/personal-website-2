@@ -3,7 +3,7 @@ import { H1 } from "../styles/typography"
 import { PageHeader } from "../styles/layout"
 
 const BlogPost = props => {
-  const { title, _rawBody } = props
+  const { title } = props
   return (
     <article>
       <PageHeader>

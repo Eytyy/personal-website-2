@@ -1,5 +1,4 @@
 import styled from "@emotion/styled"
-import { Link } from "gatsby"
 import { css } from "@emotion/core"
 import { spacing, wrapFull } from "../styles/utils"
 import { headline } from "../styles/typography"

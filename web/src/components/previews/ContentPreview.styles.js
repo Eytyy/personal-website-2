@@ -28,27 +28,6 @@ export const DecativatedLabel = styled.span`
   display: inline-block;
 `
 
-const mediumPreviewStyles = css`
-  grid-column-end: span 2;
-  .media {
-    margin-bottom: 1em;
-  }
-`
-
-const bigPreviewStyles = css`
-  grid-column-end: span 3;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 40px;
-  .media {
-    grid-column: 1 / 4;
-    margin-bottom: 1em;
-  }
-  .overview {
-    grid-column: 4 / 6;
-  }
-`
-
 export const previewMediaStyles = css`
   margin-bottom: 40px;
   .media {

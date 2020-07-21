@@ -3,13 +3,7 @@ import InternalLink from "../InternalLink"
 import Figure from "../media/figure"
 import Video from "../media/video"
 
-import {
-  SmallTitle,
-  DetailedPreview,
-  QuickView,
-  BigTitle,
-} from "./ContentPreview.styles"
-import ExternalLink from "../ExternalLink"
+import { SmallTitle, DetailedPreview, QuickView } from "./ContentPreview.styles"
 
 const ContentPreviewDetailed = ({
   preview,

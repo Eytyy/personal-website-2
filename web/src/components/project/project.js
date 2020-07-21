@@ -1,13 +1,10 @@
 import React from "react"
 import Media from "../media/media"
-import { H1, H2 } from "../../styles/typography"
+import { H2 } from "../../styles/typography"
 import PortableText from "../PortableText"
 import ProjectSections from "./project-sections"
 
-import {
-  ProjectSectionText,
-  ProjectSectionMedia,
-} from "./project-section.styles"
+import { ProjectSectionText } from "./project-section.styles"
 import {
   ProjectMain,
   ProjectFooter,
@@ -18,7 +15,6 @@ import {
 } from "./project.styles"
 import ProjectCollaborators from "./project-collaborators"
 import ProjectLinks from "./project-links"
-import ContentPreviewDetailed from "../previews/ContentPreviewDetailed"
 import InternalLink from "../InternalLink"
 
 const Project = props => {
