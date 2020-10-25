@@ -3,22 +3,14 @@ import InternalLink from "../InternalLink"
 import Figure from "../media/figure"
 import Video from "../media/video"
 
-import { SmallTitle, DetailedPreview, QuickView } from "./ContentPreview.styles"
+import { SmallTitle, Preview } from "./ContentPreview.styles"
 
-const ContentPreviewDetailed = ({
-  preview,
-  title,
-  displayType,
-  role,
-  collaborators,
-  link,
-  ...props
-}) => {
+const ContentPreview = ({ preview, title, category, _type, slug }) => {
   const previewTitle = (preview && preview.title) || title
   return (
-    <DetailedPreview>
-      <InternalLink {...props}>
-        {preview ? (
+    <Preview>
+      <InternalLink type={_type} slug={slug}>
+        {preview && (preview.figure || preview.video) ? (
           <div className="media">
             {preview.figure ? (
               <Figure format="square" image={preview.figure} width="300" />
@@ -29,16 +21,12 @@ const ContentPreviewDetailed = ({
         ) : null}
 
         <div className="overview">
-          <SmallTitle big displayType={displayType}>
-            {previewTitle}
-          </SmallTitle>
-          <QuickView>
-            <div className="role">{role}</div>
-          </QuickView>
+          <SmallTitle>{previewTitle}</SmallTitle>
+          {category.title}
         </div>
       </InternalLink>
-    </DetailedPreview>
+    </Preview>
   )
 }
 
-export default ContentPreviewDetailed
+export default ContentPreview

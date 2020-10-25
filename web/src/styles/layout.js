@@ -5,42 +5,43 @@ import { layout } from "./vars"
 export const Grid = styled.div`
   ${mq.tablet} {
     display: grid;
-    grid-gap: 40px;
+    grid-gap: ${spacing.small};
     grid-template-columns: repeat(3, 1fr);
   }
   ${mq.desktop} {
     grid-template-columns: repeat(4, 1fr);
-    grid-gap: 60px;
+    grid-gap: ${spacing.medium};
   }
   ${mq.bigscreen} {
-    grid-gap: 80px;
+    grid-gap: ${spacing.big};
   }
 `
 
 export const ProjectGrid = styled.div`
   ${mq.tablet} {
     display: grid;
-    grid-gap: 40px;
+    grid-gap: ${spacing.small};
     grid-template-columns: repeat(2, 1fr);
   }
   ${mq.desktop} {
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 60px;
+    grid-gap: ${spacing.medium};
   }
   ${mq.bigscreen} {
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 80px;
+    grid-gap: ${spacing.big};
   }
 `
 
 export const LayoutWrapper = styled.div`
   ${wrapFull}
-  padding: ${layout.headerHeight} ${spacing.small}px ${spacing.small}px;
+ 
+  padding: ${layout.headerHeight} ${spacing.small} ${spacing.small};
   ${mq.desktop} {
-    padding: ${layout.headerHeight} ${spacing.medium}px ${spacing.medium}px;
+    padding: ${layout.headerHeight} ${spacing.medium} ${spacing.medium};
   }
   ${mq.bigscreen} {
-    padding: ${layout.headerHeight} ${spacing.big}px ${spacing.big}px;
+    padding: ${layout.headerHeight} ${spacing.big} ${spacing.big};
   }
 `
 

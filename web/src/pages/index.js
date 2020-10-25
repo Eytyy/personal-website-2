@@ -2,8 +2,8 @@ import React from "react"
 import { graphql } from "gatsby"
 
 import GraphQLErrorList from "../components/graphql-error-list"
-import Page from "../components/page"
 import SEO from "../components/seo"
+import Home from "../components/Home/Home"
 
 export const query = graphql`
   query FrontPageQuery {
@@ -19,7 +19,7 @@ const IndexPage = props => {
     <GraphQLErrorList errors={errors} />
   ) : (
     <>
-      <Page data={data.page} />
+      <Home data={data.page} />
       <SEO />
     </>
   )

@@ -8,7 +8,7 @@ export const HeaderWrapper = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  padding: ${spacing.small}px 0px;
+  padding: ${spacing.small} 0px;
   z-index: 100;
   font-size: 1.4rem;
   a {

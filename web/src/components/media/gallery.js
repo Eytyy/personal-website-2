@@ -36,13 +36,13 @@ const Gallery = ({ slides, ...props }) => {
   return safeSlides.length > 0 ? (
     <GalleryWrapper>
       <Slides>
-        {safeSlides.map(({ _key, _type, ...fields }, index) => {
+        {safeSlides.map(({ _key, _type, __typename, ...fields }, index) => {
           return (
             <Slide
               key={_key}
               className={index === activeIndex ? "active" : "inactive"}
             >
-              {_type === "figure" ? (
+              {_type === "figure" || __typename === "SanityFigure" ? (
                 <Figure image={fields} {...props} />
               ) : (
                 <Video {...fields} {...props} />
@@ -55,14 +55,18 @@ const Gallery = ({ slides, ...props }) => {
         <GalleryPrevBtn
           className={`${activeIndex > 0 ? "visible" : "hidden"}`}
           onClick={previousSlide}
-        ></GalleryPrevBtn>
+        >
+          &larr;
+        </GalleryPrevBtn>
 
         <GalleryNextBtn
           className={`${
             activeIndex < slides.length - 1 ? "visible" : "hidden"
           }`}
           onClick={nextSlide}
-        ></GalleryNextBtn>
+        >
+          &rarr;
+        </GalleryNextBtn>
       </div>
     </GalleryWrapper>
   ) : null

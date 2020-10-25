@@ -1,6 +1,7 @@
 {
-  "name": "sans-sanity-gatsby-starter",
+  "name": "Eytyy",
   "version": "1.0.0",
+  "description": "Eyas Tayyem website",
   "scripts": {
     "build": "lerna run build --parallel",
     "dev": "lerna run dev --parallel",

@@ -8,6 +8,7 @@ const Media = ({ data, displayType = "gallery", ...props }) => {
   if (data.length === 0) {
     return null
   }
+
   if (data.length > 1) {
     return displayType === "gallery" ? (
       <Gallery slides={data} {...props} />
@@ -15,6 +16,7 @@ const Media = ({ data, displayType = "gallery", ...props }) => {
       <MediaGrid data={data} {...props} />
     )
   }
+
   const singleAsset = data[0]
   return singleAsset._type === "videoEmbed" ? (
     <Video {...singleAsset} />

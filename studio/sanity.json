@@ -1,7 +1,7 @@
 {
   "root": true,
   "project": {
-    "name": "sanity-gatsby-starter"
+    "name": "Eytyy"
   },
   "api": {
     "projectId": "ky5p4eno",
@@ -40,6 +40,10 @@
     {
       "implements": "part:@sanity/dashboard/config",
       "path": "./dashboardConfig.js"
+    },
+    {
+      "implements": "part:@sanity/form-builder/input-resolver",
+      "path": "./parts/inputResolver.js"
     }
   ]
 }

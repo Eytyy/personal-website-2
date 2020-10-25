@@ -44,7 +44,7 @@ const full = css`
 `
 
 const projectSection = css`
-  margin-bottom: ${spacing.small}px;
+  margin-bottom: ${spacing.small};
   ${mq.tablet} {
     margin-bottom: 0;
   }

@@ -10,9 +10,9 @@ export const breakpoints = {
 }
 
 export const spacing = {
-  small: 40,
-  medium: 90,
-  big: 135,
+  small: "40px",
+  medium: "60px",
+  big: "120px",
 }
 
 export let mq = {}
@@ -22,19 +22,20 @@ Object.keys(breakpoints).forEach(key => {
 })
 
 export const wrapFull = css`
-  padding: ${`0 ${spacing.small}px`};
+  padding: 0 ${spacing.small};
   ${mq.desktop} {
-    padding: ${`0 ${spacing.medium}px`};
+    padding: 0 ${spacing.medium};
   }
   ${mq.bigscreen} {
-    padding: ${`0 ${spacing.big}px`};
+    padding: 0 ${spacing.big};
     max-width: 1920px;
     margin: 0 auto;
   }
 `
+
 export const wrapFixed = css`
   max-width: 1200px;
-  padding: 0 30px;
+  padding: 0 ${spacing.small};
   margin: 0 auto;
   ${mq.desktop} {
     max-width: 1440px;

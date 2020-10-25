@@ -12,9 +12,9 @@ export function filterOutDocsPublishedInTheFuture({ publishedAt }) {
   return !isFuture(publishedAt)
 }
 
-export const getURL = ({ _type, slug }) => {
+export const getURL = ({ type, slug }) => {
   let basePath
-  switch (_type) {
+  switch (type) {
     case "project":
       basePath = "/work/"
       break

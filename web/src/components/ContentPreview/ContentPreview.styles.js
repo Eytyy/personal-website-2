@@ -23,11 +23,6 @@ export const ExternalLinkLabel = styled.div`
   text-decoration: none;
 `
 
-export const DecativatedLabel = styled.span`
-  padding: 4px;
-  display: inline-block;
-`
-
 export const previewMediaStyles = css`
   margin-bottom: 40px;
   .media {
@@ -35,27 +30,32 @@ export const previewMediaStyles = css`
   }
 `
 
-export const DetailedPreview = styled.div`
+export const Preview = styled.div`
   ${previewMediaStyles}
+  a {
+    height: 100%;
+  }
 `
 
 export const SimplePreview = styled.div`
   ${previewMediaStyles}
+  cursor: pointer;
 `
 
 export const InProgressPreview = styled.div`
   ${previewMediaStyles}
+  position: relative;
+  .content {
+    opacity: 0.2;
+  }
 `
 
 export const PreviewLink = styled.div`
   ${previewMediaStyles}
 `
 
-export const QuickView = styled.div`
-  .role {
-    margin-bottom: 1em;
-  }
-  .collaborators {
-    margin-bottom: 1em;
+export const ProjectInfo = styled.div`
+  div {
+    margin-bottom: 0.5em;
   }
 `

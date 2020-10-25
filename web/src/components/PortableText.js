@@ -5,8 +5,9 @@ import { Link } from "gatsby"
 import Figure from "./media/figure"
 
 import Video from "./media/video"
-import { ProjectSectionHeadline } from "./project/project-section.styles"
+import { ProjectSectionHeadline } from "./project/Sections.styles"
 import { css } from "@emotion/core"
+
 const BlockRenderer = props => {
   const { style = "normal" } = props.node
 

@@ -6,7 +6,7 @@ import {
   ProjectSectionText,
   ProjectSectionMedia,
   ProjectSectionHeadline,
-} from "./project-section.styles"
+} from "./Sections.styles"
 
 const ProjectSections = ({ sections }) => {
   const content = sections.map(component => {
@@ -20,19 +20,23 @@ const ProjectSections = ({ sections }) => {
       case "contentBlock":
         return (
           <Fragment key={component._key}>
-            <ProjectSectionText>
-              <PortableText blocks={component.content} />
-            </ProjectSectionText>
-            <ProjectSectionMedia layout={component.mediaLayout}>
-              <Media data={component.media} {...component} />
-            </ProjectSectionMedia>
+            {component.content && (
+              <ProjectSectionText>
+                <PortableText blocks={component.content} />
+              </ProjectSectionText>
+            )}
+            {component.media && (
+              <ProjectSectionMedia layout={component.mediaLayout}>
+                <Media data={component.media} {...component} />
+              </ProjectSectionMedia>
+            )}
           </Fragment>
         )
 
       case "contentBlockSimple":
         return (
           <ProjectSectionText key={component._key}>
-            <PortableText blocks={component.content} />
+            {component.content && <PortableText blocks={component.content} />}
           </ProjectSectionText>
         )
 

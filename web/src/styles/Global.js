@@ -34,5 +34,9 @@ const styles = css`
   strong {
     font-family: ${fonts.bold};
   }
+
+  ul {
+    padding: 0;
+  }
 `
 export default () => <Global styles={styles} />

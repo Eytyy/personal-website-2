@@ -1,7 +1,7 @@
 import React from "react"
 import ExternalLink from "../ExternalLink"
 import { H2, Body } from "../../styles/typography"
-import { Collaborators, Collaborator } from "./project-collaborators.styles"
+import { Collaborators, Collaborator } from "./Collaborators.styles"
 
 const ProjectCollaborators = ({ content }) => {
   return (

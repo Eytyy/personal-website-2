@@ -1,5 +1,5 @@
 import React from "react"
-import ContentPreview from "./previews/ContentPreview"
+import ContentPreview from "./ContentPreview/ContentPreview"
 import { Grid } from "../styles/layout"
 
 const ContentList = ({ content }) => {

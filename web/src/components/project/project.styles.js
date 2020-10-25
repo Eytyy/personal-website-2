@@ -1,26 +1,29 @@
 import styled from "@emotion/styled"
-import { mq } from "../../styles/utils"
-import { H1 } from "../../styles/typography"
-import { ProjectSectionMedia } from "./project-section.styles"
+import { headline } from "../../styles/typography"
+import { mq, spacing } from "../../styles/utils"
+import { ProjectSectionMedia } from "./Sections.styles"
 
 export const ProjectMain = styled.div`
-  margin-bottom: 60px;
+  margin-bottom: ${spacing.medium};
   ${mq.tablet} {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    grid-gap: 60px;
+    grid-gap: ${spacing.medium};
   }
 `
 
-export const MainTitle = styled(H1)`
+export const MainTitle = styled.h1`
+  ${headline}
+  font-size: 3rem;
   margin: 0.1em 0;
   ${mq.bigscreen} {
-    font-size: 2.4rem;
+    font-size: 3.4rem;
   }
 `
 
 export const ProjectHeader = styled.header`
   margin-bottom: 30px;
+  grid-column: auto / span 2;
   ${mq.tablet} {
     margin-bottom: 0px;
   }
@@ -33,28 +36,32 @@ export const ProjectMainMedia = styled(ProjectSectionMedia)`
 `
 
 export const ProjectFooter = styled.div`
-  margin-top: 60px;
+  margin-top: ${spacing.medium};
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 60px;
+  grid-gap: ${spacing.medium};
 `
 
-export const NextPost = styled.div`
-  cursor: pointer;
-  :hover .overlay {
-    width: 45px;
-    height: 45px;
+export const NextPost = styled.div``
+
+export const ProjectHeaderTop = styled.div`
+  margin-bottom: 2em;
+`
+
+export const OtherProjects = styled.div`
+  margin-top: ${spacing.small};
+  ${mq.desktop} {
+    margin-top: ${spacing.medium};
   }
-  .overlay {
-    transition: 0.3s;
-    z-index: 2;
-    background: blue;
-    color: #fff;
-    width: 45px;
-    height: 45px;
-    border-radius: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  ${mq.bigscreen} {
+    margin-top: ${spacing.big};
+  }
+`
+
+export const ProjectLink = styled.h2`
+  ${headline}
+  font-size: 1.8rem;
+  ${mq.bigscreen} {
+    font-size: 2.2rem;
   }
 `

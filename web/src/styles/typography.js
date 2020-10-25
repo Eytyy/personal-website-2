@@ -7,15 +7,6 @@ export const headline = css`
   font-family: ${fonts.bold};
 `
 
-export const headline_1 = css`
-  ${headline}
-  font-size: 2rem;
-`
-
-export const H1 = styled.h1`
-  ${headline_1}
-`
-
 export const H2 = styled.h2`
   ${headline}
   font-size: 1.8rem;

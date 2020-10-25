@@ -10,6 +10,7 @@ const defaultLinkStyle = css`
 
 export const External = styled.a`
   ${defaultLinkStyle}
+  color: blue;
 `
 
 export const Internal = styled(Link)`

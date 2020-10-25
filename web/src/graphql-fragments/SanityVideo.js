@@ -22,3 +22,20 @@ export const SanityVideoEmbed = graphql`
     }
   }
 `
+
+export const SanityVideo = graphql`
+  fragment SanityVideo on SanityVideo {
+    _key
+    file {
+      asset {
+        url
+      }
+    }
+    url
+    muted
+    loop
+    preload
+    autoplay
+    format
+  }
+`
