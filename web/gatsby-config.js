@@ -8,8 +8,8 @@ const isProd = process.env.NODE_ENV === "production"
 
 module.exports = {
   siteMetadata: {
-    title: `Sanity Gatsby Template`,
-    description: `Sanity Gatsby Starter Template`,
+    title: `Eytyy`,
+    description: `Eyas Tayyem`,
     author: `@eytyy`,
   },
   plugins: [

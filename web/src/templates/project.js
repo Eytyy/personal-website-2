@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import GraphQLErrorList from "../components/graphql-error-list"
-import Project from "../components/project/project"
+import Project from "../components/project/Project"
 import SEO from "../components/seo"
 
 export const query = graphql`
