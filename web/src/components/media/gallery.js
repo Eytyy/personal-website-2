@@ -43,9 +43,9 @@ const Gallery = ({ slides, ...props }) => {
               className={index === activeIndex ? "active" : "inactive"}
             >
               {_type === "figure" || __typename === "SanityFigure" ? (
-                <Figure image={fields} {...props} />
+                <Figure image={fields} />
               ) : (
-                <Video {...fields} {...props} />
+                <Video {...fields} />
               )}
             </Slide>
           )

@@ -24,7 +24,9 @@ export const ExternalLinkLabel = styled.div`
 `
 
 export const previewMediaStyles = css`
-  margin-bottom: 40px;
+  /* margin-bottom: 40px; */
+  margin: 0 1em 0.5em 0;
+  display: inline-block;
   .media {
     margin-bottom: 1em;
   }

@@ -7,17 +7,18 @@ function getImageHeight({ width, format, image }) {
   switch (format) {
     case "square":
       return width
-    case "original":
-      const originalAspectRatio = image.asset.metadata.dimensions.aspectRatio
-      return Math.floor(width / originalAspectRatio)
-    default:
+    case "landscape":
       const defaultRatio = 9 / 16
       return Math.floor(defaultRatio * width)
+    default:
+      const originalAspectRatio = image.asset.metadata.dimensions.aspectRatio
+      return Math.floor(width / originalAspectRatio)
   }
 }
 // TODO: figure out how to pass aspect ratio to gallery container
 
-const Figure = ({ image, width = 1200, format = "landscape" }) => {
+const Figure = ({ image, width = 1200 }) => {
+  const format = image.format || "original"
   const height = getImageHeight({ width, format, image })
   const imgUrl =
     image &&
