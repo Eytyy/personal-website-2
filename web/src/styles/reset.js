@@ -34,6 +34,9 @@ export default css`
 
   p {
     margin: 0 0 1.5em;
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
   header,
   video,

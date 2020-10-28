@@ -1,6 +1,7 @@
 import styled from "@emotion/styled"
 import { mq } from "../../styles/utils"
 import { css } from "@emotion/core"
+import { MediaButton } from "./media.styles"
 
 export const VideoWrapper = styled.div`
   video {
@@ -65,4 +66,10 @@ export const BottomControls = styled.div`
   ${mq.tablet} {
     padding: 0;
   }
+`
+
+export const PlayButton = styled(MediaButton)`
+  width: 60px;
+  height: 60px;
+  font-size: 42px;
 `

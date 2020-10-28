@@ -7,6 +7,7 @@ import {
   VideoControls,
   BottomControls,
   VideoMain,
+  PlayButton,
 } from "./video.styles"
 import VideoLoader from "./VideoLoader"
 import { MdPlayArrow, MdPause, MdVolumeOff, MdVolumeUp } from "react-icons/md"
@@ -146,9 +147,9 @@ const Video = ({ video, hideControls, autoplay = false, active = false }) => {
           <VideoControls>
             <div className="video-btn" onClick={ToggleVideo}>
               {!playing && (
-                <MediaButton>
+                <PlayButton>
                   <MdPlayArrow color="#FFF" />
-                </MediaButton>
+                </PlayButton>
               )}
             </div>
           </VideoControls>
