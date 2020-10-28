@@ -13,7 +13,10 @@ const ProjectSections = ({ sections }) => {
     switch (component._type) {
       case "headline":
         return (
-          <ProjectSectionHeadline key={component._key}>
+          <ProjectSectionHeadline
+            highlighted={!!component.highlight}
+            key={component._key}
+          >
             {component.headline}
           </ProjectSectionHeadline>
         )
@@ -21,7 +24,7 @@ const ProjectSections = ({ sections }) => {
         return (
           <Fragment key={component._key}>
             {component.content && (
-              <ProjectSectionText>
+              <ProjectSectionText layout={component.contentLayout}>
                 <PortableText blocks={component.content} />
               </ProjectSectionText>
             )}
@@ -35,7 +38,10 @@ const ProjectSections = ({ sections }) => {
 
       case "contentBlockSimple":
         return (
-          <ProjectSectionText key={component._key}>
+          <ProjectSectionText
+            key={component._key}
+            layout={component.contentLayout}
+          >
             {component.content && <PortableText blocks={component.content} />}
           </ProjectSectionText>
         )

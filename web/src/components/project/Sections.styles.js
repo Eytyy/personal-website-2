@@ -51,9 +51,22 @@ const projectSection = css`
 
 export const ProjectSectionText = styled(Body)`
   ${projectSection}
-  grid-column: auto / span 2;
+  grid-column: ${({ layout }) =>
+    layout === "full" ? "auto / span 6" : "auto / span 2"}; ;
+    
+  text-align: ${({ layout }) => (layout === "full" ? "center" : "left")};
+  font-size: ${({ layout }) => (layout === "full" ? "1.6rem" : "1.1rem")};
+
   h2 {
     margin-bottom: 0.5em;
+    font-size: ${({ layout }) => (layout === "full" ? "2.8rem" : "1.8rem")};
+  }
+
+  ${mq.bigscreen} {
+    font-size: ${({ layout }) => (layout === "full" ? "2rem" : "1.3rem")};
+    h2 {
+      font-size: ${({ layout }) => (layout === "full" ? "3.2rem" : "2.2rem")};
+    }
   }
 `
 
@@ -64,4 +77,9 @@ export const ProjectSectionMedia = styled.div`
 
 export const ProjectSectionHeadline = styled(H2)`
   margin-bottom: 0.5em;
+  font-size: 1.8rem;
+
+  ${mq.bigscreen} {
+    font-size: 2.2rem;
+  }
 `

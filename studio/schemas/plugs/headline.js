@@ -1,12 +1,12 @@
 export default {
-  title: "Headline",
-  type: "object",
-  name: "headline",
+  title: 'Headline',
+  type: 'object',
+  name: 'headline',
   fields: [
     {
-      title: "Headline",
-      name: "headline",
-      type: "string",
+      title: 'Headline',
+      name: 'headline',
+      type: 'string',
     },
   ],
 };
