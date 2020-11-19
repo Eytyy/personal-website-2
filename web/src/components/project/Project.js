@@ -36,7 +36,7 @@ const Project = props => {
 
   const { projects } = useStaticQuery(graphql`
     query otherProjectsQuery {
-      projects: allSanityProject(limit: 10) {
+      projects: allSanityProject {
         all: nodes {
           id
           _id

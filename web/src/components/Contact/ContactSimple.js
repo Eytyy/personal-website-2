@@ -4,7 +4,7 @@ import { ContactLink } from "./Contact.styles"
 
 const ContactSimple = () => {
   return (
-    <div>
+    <>
       <Preview>
         <ContactLink
           target="_blank"
@@ -12,7 +12,6 @@ const ContactSimple = () => {
           href="mailto:e.tayyem@gmail.com"
         >
           <SimpleTitle>email / </SimpleTitle>
-          e.tayyem@gmail.com
         </ContactLink>
       </Preview>
       <Preview>
@@ -22,7 +21,6 @@ const ContactSimple = () => {
           href="tel:00962796659649"
         >
           <SimpleTitle>phone / </SimpleTitle>
-          +962 79 6659 649
         </ContactLink>
       </Preview>
       <Preview>
@@ -32,10 +30,9 @@ const ContactSimple = () => {
           href="https://github.com/Eytyy"
         >
           <SimpleTitle>github.</SimpleTitle>
-          Eytyy
         </ContactLink>
       </Preview>
-    </div>
+    </>
   )
 }
 

@@ -3,8 +3,6 @@ import ContentPreview from "./ContentPreview/ContentPreview"
 import Simple from "./ContentPreview/Simple"
 
 import { Grid, List } from "../styles/layout"
-import { SimpleTitle, Preview } from "./ContentPreview/ContentPreview.styles"
-import { ContactLink } from "./Contact/Contact.styles"
 import ContactSimple from "./Contact/ContactSimple"
 
 const ContentList = ({ content, displayType }) => {

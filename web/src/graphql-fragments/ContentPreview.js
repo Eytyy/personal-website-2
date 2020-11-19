@@ -4,6 +4,7 @@ export const ContentPreview = graphql`
   fragment ContentPreview on SanityProject {
     title
     displayType
+    link
     category {
       _key
       title

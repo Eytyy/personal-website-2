@@ -10,6 +10,12 @@ export const BigTitle = styled(H2)`
 export const SimpleTitle = styled(H2)`
   font-size: 3.2em;
   text-transform: lowercase;
+  ${mq.desktop} {
+    font-size: 3.2rem;
+  }
+  ${mq.bigscreen} {
+    font-size: 3.2rem;
+  }
 `
 
 export const SmallTitle = styled(H2)`
