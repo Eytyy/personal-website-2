@@ -5,6 +5,7 @@ export const ContentPreview = graphql`
     title
     displayType
     link
+    role
     category {
       _key
       title
