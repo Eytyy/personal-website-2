@@ -7,7 +7,6 @@ export default {
       name: 'name',
     },
     prepare: ({name, _createdAt}) => {
-      console.log(_createdAt);
       return {
         title: `Form submission from ${name}`,
       };

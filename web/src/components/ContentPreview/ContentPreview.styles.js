@@ -7,6 +7,11 @@ export const BigTitle = styled(H2)`
   font-size: 3.2em;
 `
 
+export const SimpleTitle = styled(H2)`
+  font-size: 3.2em;
+  text-transform: lowercase;
+`
+
 export const SmallTitle = styled(H2)`
   font-size: 1.2rem;
   ${mq.desktop} {
@@ -24,7 +29,6 @@ export const ExternalLinkLabel = styled.div`
 `
 
 export const previewMediaStyles = css`
-  /* margin-bottom: 40px; */
   margin: 0 1em 0.5em 0;
   display: inline-block;
   .media {

@@ -17,6 +17,15 @@ export const Grid = styled.div`
   }
 `
 
+export const List = styled.ul`
+  ${mq.tablet} {
+  }
+  ${mq.desktop} {
+  }
+  ${mq.bigscreen} {
+  }
+`
+
 export const ProjectGrid = styled.div`
   ${mq.tablet} {
     display: grid;

@@ -23,8 +23,7 @@ const query = graphql`
 
 const Header = ({ siteTitle, location }) => {
   const data = useStaticQuery(query)
-  const navMenuItems = data.site.mainNav.items
-  return (
+  return location && location.pathname !== "/" ? (
     <HeaderWrapper>
       <HeaderInner>
         <h1
@@ -36,19 +35,13 @@ const Header = ({ siteTitle, location }) => {
           {siteTitle}
         </h1>
         <MainNavigation>
-          {location && location.pathname !== "/" && (
-            <NavigationItem>
-              <Link to="/">&larr;</Link>
-            </NavigationItem>
-          )}
-          {navMenuItems &&
-            navMenuItems.map(i => (
-              <CTALink key={i._key} location={location} {...i} />
-            ))}
+          <NavigationItem>
+            <Link to="/">&larr;</Link>
+          </NavigationItem>
         </MainNavigation>
       </HeaderInner>
     </HeaderWrapper>
-  )
+  ) : null
 }
 
 export default Header

@@ -28,6 +28,7 @@ export const ProjectHeader = styled.header`
     margin-bottom: 0px;
   }
 `
+
 export const ProjectMainMedia = styled(ProjectSectionMedia)`
   margin: 0px -40px 30px;
   ${mq.tablet} {

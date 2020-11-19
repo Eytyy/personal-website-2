@@ -12,7 +12,6 @@ const BlockRenderer = props => {
   const { style = "normal" } = props.node
 
   if (style === "h2") {
-    console.log(props)
     return (
       <ProjectSectionHeadline
         css={css`

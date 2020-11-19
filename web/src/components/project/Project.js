@@ -47,7 +47,6 @@ const Project = props => {
   `)
 
   const otherProjects = projects.all.filter(project => project.id !== id)
-
   return (
     <article>
       <ProjectMain>
@@ -83,7 +82,7 @@ const Project = props => {
         )}
       </ProjectFooter>
       <OtherProjects>
-        <ContentList content={otherProjects} />
+        <ContentList content={otherProjects} displayType="list" />
       </OtherProjects>
     </article>
   )

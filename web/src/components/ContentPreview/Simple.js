@@ -2,20 +2,44 @@ import React from "react"
 import InternalLink from "../InternalLink"
 import ExternalLink from "../ExternalLink"
 
-import { Preview, SmallTitle } from "./ContentPreview.styles"
+import { Preview, SimpleTitle } from "./ContentPreview.styles"
 
-const Simple = ({ preview, title, _type, slug, link, displayType, last }) => {
+const Simple = ({
+  preview,
+  title,
+  _type,
+  slug,
+  last,
+  displayType,
+  link,
+  role,
+  category,
+}) => {
+  console.log(displayType)
   const previewTitle = (preview && preview.title) || title
   return (
     <Preview>
-      <InternalLink type={_type} slug={slug}>
-        <div className="overview">
-          <SmallTitle>
-            {previewTitle}
-            {last ? "." : ", "}
-          </SmallTitle>
-        </div>
-      </InternalLink>
+      {displayType === "link" && link ? (
+        <ExternalLink to={link}>
+          <div className="overview">
+            <SimpleTitle>
+              {previewTitle}
+              {last ? "." : " / "}
+            </SimpleTitle>
+            {role}
+          </div>
+        </ExternalLink>
+      ) : (
+        <InternalLink type={_type} slug={slug}>
+          <div className="overview">
+            {category.title}
+            <SimpleTitle>
+              {previewTitle}
+              {last ? "." : " / "}
+            </SimpleTitle>
+          </div>
+        </InternalLink>
+      )}
     </Preview>
   )
 }

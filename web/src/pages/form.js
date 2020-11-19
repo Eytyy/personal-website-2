@@ -16,8 +16,6 @@ const Form = () => {
       "skOggKN9ZYs6KOJCOuTvijbdxGHKLRUaAgpQumnLHVFbQNAMi5TFz1DdFfuAByFTYTj4vwHw8GNEJVJZQgKjUQkOq4jchv5OgJIh9t3Cf7HLdx34FCD71SjVeHuh3tY8ZJVKr3Wf71e3eyIM1xk4ZTg8w9Jc8photvAGuSr4xab2axcGaEHm",
   })
 
-  console.log(client)
-
   const handleSubmit = e => {
     const doc = {
       _type: "submission",

@@ -2,6 +2,11 @@ import styled from "@emotion/styled"
 import { headline } from "../../styles/typography"
 import { mq } from "../../styles/utils"
 
+export const ContactLink = styled.a`
+  color: blue;
+  text-decoration: none;
+`
+
 export const ContactWrapper = styled.section`
   ul {
     list-style: none;
