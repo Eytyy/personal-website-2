@@ -130,7 +130,6 @@ const Video = ({ video, hideControls, autoplay = false, active = false }) => {
             preload="auto"
             src={file.asset.url}
             className="video"
-            controls
           />
         ) : (
           <video
@@ -139,10 +138,43 @@ const Video = ({ video, hideControls, autoplay = false, active = false }) => {
             preload="auto"
             src={file.asset.url}
             className="video"
-            controls
           />
         )}
+
+        {loading ? (
+          <VideoLoader></VideoLoader>
+        ) : hideControls ? null : (
+          <VideoControls>
+            <div className="video-btn" onClick={ToggleVideo}>
+              {!playing && (
+                <PlayButton>
+                  <MdPlayArrow color="#FFF" />
+                </PlayButton>
+              )}
+            </div>
+          </VideoControls>
+        )}
       </VideoMain>
+      {!hideControls && (
+        <BottomControls playing={playing}>
+          <div onClick={ToggleVideo}>
+            <MediaButton>
+              <MdPause color="#FFF" />
+            </MediaButton>
+          </div>
+          <div onClick={toggleSound} className="volume">
+            {muted ? (
+              <MediaButton>
+                <MdVolumeUp color="#FFF" />
+              </MediaButton>
+            ) : (
+              <MediaButton>
+                <MdVolumeOff color="#FFF" />
+              </MediaButton>
+            )}
+          </div>
+        </BottomControls>
+      )}
     </VideoWrapper>
   )
 }
