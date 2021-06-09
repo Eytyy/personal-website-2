@@ -6,7 +6,7 @@ const ContactSimple = () => {
   return (
     <>
       <Preview>
-        <SimpleTitle>🏗 ... 👉</SimpleTitle>
+        <SimpleTitle>🏗 ... </SimpleTitle>
       </Preview>
       <Preview>
         <ContactLink
