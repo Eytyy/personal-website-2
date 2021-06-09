@@ -6,6 +6,9 @@ const ContactSimple = () => {
   return (
     <>
       <Preview>
+        <SimpleTitle>🏗 ... 👉</SimpleTitle>
+      </Preview>
+      <Preview>
         <ContactLink
           target="_blank"
           rel="noopener noreferrer"
@@ -29,8 +32,12 @@ const ContactSimple = () => {
           rel="noopener noreferrer"
           href="https://github.com/Eytyy"
         >
-          <SimpleTitle>github.</SimpleTitle>
+          <SimpleTitle>github</SimpleTitle>
         </ContactLink>
+      </Preview>
+
+      <Preview>
+        <SimpleTitle> 👋 </SimpleTitle>
       </Preview>
     </>
   )
