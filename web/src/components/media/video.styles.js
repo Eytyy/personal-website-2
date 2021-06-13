@@ -4,14 +4,13 @@ import { css } from "@emotion/core"
 import { MediaButton } from "./media.styles"
 
 export const VideoWrapper = styled.div`
-  video {
-    width: 100%;
-    height: auto;
-  }
-`
-
-export const VideoMain = styled.div`
   position: relative;
+  height: 100%;
+  video {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+  }
 `
 
 export const VideoCaption = styled.div`
@@ -72,4 +71,15 @@ export const PlayButton = styled(MediaButton)`
   width: 60px;
   height: 60px;
   font-size: 42px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+`
+
+export const VideoThumbnail = styled.div`
+  height: 100%;
+  width: 100%;
+  position: relative;
 `

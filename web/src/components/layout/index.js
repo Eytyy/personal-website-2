@@ -2,10 +2,11 @@ import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
-import Global from "../styles/Global.js"
-import { LayoutWrapper } from "../styles/layout"
+import Global from "../../styles/Global.js"
+import { LayoutWrapper } from "./styles"
 
-import Header from "./header"
+import Header from "../header"
+import Navigation from "../navigation/index.js"
 
 export const query = graphql`
   query SiteTitleQuery {
@@ -24,6 +25,8 @@ const Layout = ({ children, location }) => {
       <Global />
       <LayoutWrapper>
         <Header location={location} siteTitle={data.site.siteMetadata.title} />
+        <Navigation />
+
         <main>{children}</main>
       </LayoutWrapper>
     </>

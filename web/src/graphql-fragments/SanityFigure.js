@@ -20,7 +20,6 @@ export const SanityFigure = graphql`
       height
       width
     }
-    format
     asset {
       _id
       metadata {

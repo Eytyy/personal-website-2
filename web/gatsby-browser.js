@@ -1,6 +1,1 @@
-import Layout from "./src/components/layout"
-
-import React from "react"
-export const wrapPageElement = ({ element, props }) => (
-  <Layout {...props}>{element}</Layout>
-)
+export { wrapPageElement } from "./gatsby-ssr"

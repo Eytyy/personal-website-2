@@ -16,7 +16,5 @@ export const MediaButton = styled.button`
   justify-content: center;
   align-items: center;
   transition: 0.3s;
-  :hover {
-    transform: scale(1.2);
-  }
+  color: #fff;
 `

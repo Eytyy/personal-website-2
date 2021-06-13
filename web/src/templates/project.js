@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import GraphQLErrorList from "../components/graphql-error-list"
-import Project from "../components/project/Project"
+import Project from "../components/project"
 import SEO from "../components/seo"
 
 export const query = graphql`
@@ -10,9 +10,7 @@ export const query = graphql`
       id
       title
       _rawDescription(resolveReferences: { maxDepth: 10 })
-      _rawSections(resolveReferences: { maxDepth: 10 })
       role
-      displayType
       link
       mainMedia {
         ... on SanityVideoEmbed {
@@ -39,19 +37,6 @@ export const query = graphql`
         }
         _key
         role
-      }
-      preview {
-        title
-        figure {
-          ...SanityFigure
-        }
-        video {
-          file {
-            asset {
-              url
-            }
-          }
-        }
       }
       openGraph {
         ...OpenGraph

@@ -49,19 +49,5 @@ export default {
       title: 'Files',
       fieldset: 'media',
     },
-    {
-      name: 'mediaLayout',
-      title: 'Layout',
-      type: 'string',
-      description: 'Default is medium',
-      options: {
-        list: [
-          {title: 'Small', value: 'small'},
-          {title: 'Big', value: 'big'},
-          {title: 'Full', value: 'full'},
-        ],
-      },
-      fieldset: 'media',
-    },
   ],
 };

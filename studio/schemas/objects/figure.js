@@ -25,27 +25,15 @@ export default {
         isHighlighted: true,
       },
     },
-    {
-      name: 'format',
-      type: 'string',
-      title: 'format',
-      description: 'If empty, the image will retain the original aspect ration',
-      options: {
-        isHighlighted: true,
-        list: ['square', 'landscape'],
-      },
-    },
   ],
   preview: {
     select: {
       imageUrl: 'asset.url',
       title: 'caption',
-      subtitle: 'format',
     },
     prepare: ({imageUrl, title, subtitle}) => ({
       imageUrl,
       title,
-      subtitle: `format: ${subtitle || 'default'}`,
     }),
   },
 };

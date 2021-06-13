@@ -5,7 +5,6 @@ import { Link } from "gatsby"
 import Figure from "./media/figure"
 
 import Video from "./media/video"
-import { ProjectSectionHeadline } from "./project/Sections.styles"
 import { css } from "@emotion/core"
 
 const BlockRenderer = props => {
@@ -13,13 +12,13 @@ const BlockRenderer = props => {
 
   if (style === "h2") {
     return (
-      <ProjectSectionHeadline
+      <h2
         css={css`
           margin-bottom: 0.5em;
         `}
       >
         {props.children}
-      </ProjectSectionHeadline>
+      </h2>
     )
   }
 

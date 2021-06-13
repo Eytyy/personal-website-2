@@ -1,18 +1,18 @@
-import React from "react";
+import React from 'react';
 
 export default {
-  type: "object",
-  name: "videoEmbed",
-  title: "Video",
+  type: 'object',
+  name: 'videoEmbed',
+  title: 'Video',
 
   preview: {
     select: {
-      title: "title",
-      media: "posterFrame",
+      title: 'title',
+      media: 'posterFrame',
     },
-    prepare({ title, media }) {
+    prepare({title, media}) {
       return {
-        title: "Video",
+        title: 'Video',
         media,
         subtitle: title,
       };
@@ -20,34 +20,22 @@ export default {
   },
   fields: [
     {
-      name: "title",
-      type: "string",
-      title: "Title",
+      name: 'title',
+      type: 'string',
+      title: 'Title',
     },
     {
-      name: "posterFrame",
-      type: "figure",
-      title: "Poster frame",
+      name: 'posterFrame',
+      type: 'figure',
+      title: 'Poster frame',
       options: {
         hotspot: true,
       },
     },
-
     {
-      name: "video",
-      title: "Video",
-      description: (
-        <span>
-          You can either use a url, or upload a video.
-          <br />
-          For file uploads
-          <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Supported_media_formats">
-            recomended types
-          </a>{" "}
-          are Priciwebm and mp4
-        </span>
-      ),
-      type: "video",
+      name: 'video',
+      title: 'Video',
+      type: 'video',
     },
   ],
 };

@@ -22,14 +22,9 @@ Object.keys(breakpoints).forEach(key => {
 })
 
 export const wrapFull = css`
-  padding: 0 ${spacing.small};
   ${mq.desktop} {
-    padding: 0 ${spacing.medium};
   }
   ${mq.bigscreen} {
-    padding: 0 ${spacing.big};
-    max-width: 1920px;
-    margin: 0 auto;
   }
 `
 

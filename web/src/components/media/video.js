@@ -1,24 +1,15 @@
 /* eslint-disable jsx-a11y/media-has-caption */
 import React from "react"
 import { useState, useRef, useEffect } from "react"
+import { MdPause, MdPlayArrow } from "react-icons/md"
 
-import {
-  VideoWrapper,
-  VideoControls,
-  BottomControls,
-  VideoMain,
-  PlayButton,
-} from "./video.styles"
-import VideoLoader from "./VideoLoader"
-import { MdPlayArrow, MdPause, MdVolumeOff, MdVolumeUp } from "react-icons/md"
-import { MediaButton } from "./media.styles"
+import { VideoWrapper, PlayButton } from "./video.styles"
 
-const Video = ({ video, hideControls, autoplay = false, active = false }) => {
+const Video = ({ video, active = false }) => {
   const { file } = video
   const videoElement = useRef(null)
   const [state, setState] = useState({
     playing: false,
-    loading: false,
     muted: false,
   })
 
@@ -50,18 +41,6 @@ const Video = ({ video, hideControls, autoplay = false, active = false }) => {
     videoElement.current.currentTime = 0
   }
 
-  const showLoading = () => {
-    safelySetState({
-      loading: true,
-    })
-  }
-
-  const hideLoading = () => {
-    safelySetState({
-      loading: false,
-    })
-  }
-
   const onPlaying = () => {
     safelySetState({
       playing: true,
@@ -75,21 +54,11 @@ const Video = ({ video, hideControls, autoplay = false, active = false }) => {
     })
   }
 
-  const toggleSound = () => {
-    const isMuted = videoElement.current.muted
-    videoElement.current.muted = !isMuted
-    safelySetState({
-      muted: !isMuted,
-    })
-  }
-
   const ToggleVideo = () => (state.playing ? pause() : play())
 
   useEffect(() => {
     const video = videoElement.current
     video.addEventListener("ended", onComplete)
-    video.addEventListener("waiting", showLoading)
-    video.addEventListener("loadedmetadata", hideLoading)
     video.addEventListener("playing", onPlaying)
     video.addEventListener("play", onPlaying)
     video.addEventListener("pause", onPaused)
@@ -102,8 +71,6 @@ const Video = ({ video, hideControls, autoplay = false, active = false }) => {
 
     return function cleanup() {
       video.removeEventListener("ended", onComplete)
-      video.removeEventListener("waiting", showLoading)
-      video.removeEventListener("loadedmetadata", hideLoading)
       video.removeEventListener("playing", onPlaying)
       video.removeEventListener("play", onPlaying)
       video.removeEventListener("pause", onPaused)
@@ -116,33 +83,25 @@ const Video = ({ video, hideControls, autoplay = false, active = false }) => {
     }
   }, [active])
 
-  const { playing, loading, muted } = state
+  const { playing } = state
   return (
     <VideoWrapper>
-      <VideoMain>
-        {autoplay ? (
-          <video
-            playsInline
-            loop
-            muted
-            autoPlay
-            ref={videoElement}
-            preload="auto"
-            src={file.asset.url}
-            className="video"
-            controls
-          />
-        ) : (
-          <video
-            playsInline
-            ref={videoElement}
-            preload="auto"
-            src={file.asset.url}
-            className="video"
-            controls
-          />
-        )}
-      </VideoMain>
+      {playing ? (
+        <PlayButton onClick={ToggleVideo}>
+          <MdPause />
+        </PlayButton>
+      ) : (
+        <PlayButton onClick={ToggleVideo}>
+          <MdPlayArrow />
+        </PlayButton>
+      )}
+      <video
+        playsInline
+        ref={videoElement}
+        preload="auto"
+        src={file.asset.url}
+        className="video"
+      />
     </VideoWrapper>
   )
 }

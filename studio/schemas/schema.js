@@ -15,6 +15,10 @@ import collaborator from './documents/collaborator';
 import collaboratorReference from './objects/collaboratorReference';
 import projectCategory from './documents/project-category';
 
+import presentation from './documents/presentation';
+import gif from './documents/gif';
+import gifItem from './objects/gifItem';
+
 // objects
 import figure from './objects/figure';
 import videoEmbed from './objects/videoEmbed';
@@ -27,7 +31,6 @@ import cta from './objects/cta';
 import blockContentSimple from './objects/blockContentSimple';
 import blockContent from './objects/blockContent';
 
-import contentPreview from './objects/contentPreview';
 import externalLink from './objects/externalLink';
 
 import * as plugs from './plugs';
@@ -52,6 +55,10 @@ export default createSchema({
       siteSettings,
       route,
 
+      presentation,
+      gif,
+      gifItem,
+
       figure,
       videoEmbed,
       video,
@@ -65,7 +72,6 @@ export default createSchema({
       collaborator,
       collaboratorReference,
 
-      contentPreview,
       cta,
 
       formSubmission,
