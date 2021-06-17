@@ -1,3 +1,5 @@
+import {mq} from '../../../web/src/styles/utils';
+
 export default {
   title: 'Presentation',
   type: 'document',
@@ -6,7 +8,17 @@ export default {
     {
       name: 'title',
       type: 'string',
-      title: 'Title',
+      title: 'Client',
+    },
+    {
+      name: 'scope',
+      type: 'string',
+      title: 'Scope',
+    },
+    {
+      name: 'date',
+      type: 'string',
+      title: 'Date',
     },
     {
       name: 'content',
@@ -14,7 +26,19 @@ export default {
       type: 'array',
       of: [
         {
+          type: 'presentText',
+        },
+        {
+          type: 'presentHeadline',
+        },
+        {
+          type: 'presentImage',
+        },
+        {
           type: 'gif',
+        },
+        {
+          type: 'svg',
         },
       ],
     },

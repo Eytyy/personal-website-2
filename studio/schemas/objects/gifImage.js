@@ -1,7 +1,7 @@
 export default {
-  title: 'GIF Item',
+  title: 'GIF Item Image',
   type: 'object',
-  name: 'gifItem',
+  name: 'gifImage',
   fields: [
     {
       name: 'title',
@@ -12,7 +12,6 @@ export default {
       name: 'delay',
       type: 'number',
       title: 'Delay',
-      initialValue: 0,
     },
     {
       name: 'image',

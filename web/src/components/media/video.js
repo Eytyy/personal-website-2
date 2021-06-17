@@ -58,22 +58,10 @@ const Video = ({ video, active = false }) => {
 
   useEffect(() => {
     const video = videoElement.current
-    video.addEventListener("ended", onComplete)
-    video.addEventListener("playing", onPlaying)
-    video.addEventListener("play", onPlaying)
-    video.addEventListener("pause", onPaused)
-
     if (video.muted) {
       safelySetState({
         muted: true,
       })
-    }
-
-    return function cleanup() {
-      video.removeEventListener("ended", onComplete)
-      video.removeEventListener("playing", onPlaying)
-      video.removeEventListener("play", onPlaying)
-      video.removeEventListener("pause", onPaused)
     }
   }, [])
 
@@ -96,6 +84,10 @@ const Video = ({ video, active = false }) => {
         </PlayButton>
       )}
       <video
+        onEnded={onComplete}
+        onPlaying={onPlaying}
+        onPlay={onPlaying}
+        onPause={onPaused}
         playsInline
         ref={videoElement}
         preload="auto"

@@ -1,7 +1,10 @@
+import {MdGif} from 'react-icons/md';
+
 export default {
   title: 'GIF',
   type: 'document',
   name: 'gif',
+  icon: MdGif,
   fields: [
     {
       name: 'title',
@@ -14,13 +17,23 @@ export default {
       title: 'Loop',
       initialValue: false,
     },
+
+    {
+      name: 'universalDelay',
+      type: 'number',
+      title: 'Universal Delay',
+      initialValue: 60,
+    },
     {
       name: 'content',
       title: 'Content',
       type: 'array',
       of: [
         {
-          type: 'gifItem',
+          type: 'gifImage',
+        },
+        {
+          type: 'gifSvg',
         },
       ],
     },
@@ -32,6 +45,7 @@ export default {
     },
     prepare: ({media, title}) => ({
       title: title,
+      subtitle: 'gif',
       media: media?.[0]?.image || '',
     }),
   },

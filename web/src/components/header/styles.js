@@ -14,7 +14,7 @@ export const Logo = styled.div`
   width: 42px;
   height: 42px;
   border-radius: 100%;
-  background: blue;
+  border: 3px solid ${props => (props?.color === "invert" ? "white" : "blue")};
 `
 export const hidden = css`
   display: none;

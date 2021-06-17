@@ -17,10 +17,12 @@ import projectCategory from './documents/project-category';
 
 import presentation from './documents/presentation';
 import gif from './documents/gif';
-import gifItem from './objects/gifItem';
+import gifSvg from './objects/gifSvg';
+import gifImage from './objects/gifImage';
 
 // objects
 import figure from './objects/figure';
+import svg from './objects/svg';
 import videoEmbed from './objects/videoEmbed';
 import video from './objects/video';
 
@@ -36,6 +38,11 @@ import externalLink from './objects/externalLink';
 import * as plugs from './plugs';
 import formSubmission from './documents/formSubmission';
 import answers from './objects/answers';
+
+import presentContentBlock from './objects/presentContentBlock';
+import presentImage from './objects/presentImage';
+import presentText from './objects/presentText';
+import presentHeadline from './objects/presentHeadline';
 
 const allPlugs = Object.values(plugs).map((plug) => {
   return plug;
@@ -57,9 +64,16 @@ export default createSchema({
 
       presentation,
       gif,
-      gifItem,
+      gifImage,
+      gifSvg,
+      presentContentBlock,
+      presentImage,
+      presentText,
+      presentHeadline,
 
       figure,
+      svg,
+
       videoEmbed,
       video,
       gallery,

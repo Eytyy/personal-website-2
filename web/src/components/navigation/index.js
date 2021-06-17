@@ -18,7 +18,7 @@ const Navigation = () => {
           <MdClose />
         </NavigationItem>
       )}
-      {state?.hasDescription && !state?.isDescriptionVisible && (
+      {/* {state?.hasDescription && !state?.isDescriptionVisible && (
         <NavigationItem onClick={showDescription}>
           <MdTextFields />
         </NavigationItem>
@@ -27,7 +27,7 @@ const Navigation = () => {
         <NavigationItem onClick={hideDescription}>
           <MdImage />
         </NavigationItem>
-      )}
+      )} */}
     </MainNavigation>
   )
 }

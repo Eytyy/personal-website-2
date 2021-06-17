@@ -5,6 +5,9 @@ import ContactSimple from "../Contact/ContactSimple"
 import ProjectDetails from "../project/Details"
 import Project from "../project"
 import { ProjectsWrapper } from "./styles"
+import Navigation from "../navigation"
+import Header from "../header"
+import { LayoutWrapper } from "../layout/styles"
 
 const Home = ({ data }) => {
   const { state, setActive } = useSiteContext()
@@ -12,7 +15,9 @@ const Home = ({ data }) => {
   const activeProject = state.activeProject
 
   return (
-    <>
+    <LayoutWrapper>
+      <Header />
+      <Navigation />
       <ProjectsWrapper>
         {data.map(project => (
           <Project setActive={setActive} {...project} key={project._id} />
@@ -26,7 +31,7 @@ const Home = ({ data }) => {
         />
       )}
       <ContactSimple />
-    </>
+    </LayoutWrapper>
   )
 }
 
