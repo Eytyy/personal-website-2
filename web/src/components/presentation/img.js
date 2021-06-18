@@ -1,6 +1,10 @@
 import React from "react"
 import Figure from "../media/figure"
-import { PresentationHeader, PresentationPageWrapper } from "./style"
+import {
+  PresentationHeader,
+  ImageWrapper,
+  PresentationPageWrapper,
+} from "./style"
 
 const Img = props => {
   return (
@@ -8,7 +12,9 @@ const Img = props => {
       <PresentationHeader>
         {props.caption && <div className="caption">{props.caption}</div>}
       </PresentationHeader>
-      <Figure image={props} />{" "}
+      <ImageWrapper>
+        <Figure image={props} />{" "}
+      </ImageWrapper>
     </PresentationPageWrapper>
   )
 }

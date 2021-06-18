@@ -7,17 +7,11 @@ function getImageHeight({ width, image }) {
     image?.asset?.metadata?.dimensions?.aspectRatio || 1
   return Math.floor(width / originalAspectRatio)
 }
-const Figure = ({ image, width = 1200 }) => {
+const Figure = ({ image, width }) => {
   if (!image.asset) return null
   const height = getImageHeight({ width, image })
   const imgUrl =
-    image &&
-    imageUrlFor(buildImageObj(image))
-      .width(width)
-      .height(height)
-      .fit("crop")
-      .auto("format")
-      .url()
+    image && imageUrlFor(buildImageObj(image)).fit("crop").auto("format").url()
   return imgUrl ? <img src={imgUrl} alt={image.alt || ""} /> : <></>
 }
 

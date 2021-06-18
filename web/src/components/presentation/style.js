@@ -2,10 +2,16 @@ import css from "@emotion/css"
 import styled from "@emotion/styled"
 import { fonts } from "../../styles/vars"
 
+export const ImageWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  padding: 100px;
+`
+
 export const PresentationWrapper = styled.div`
   height: 100vh;
   width: 100%;
-  color: blue;
+  color: black;
   .svg_wrapper {
     height: 100%;
     width: 100%;
@@ -25,8 +31,7 @@ export const PresentationPageWrapper = styled.div`
 `
 
 export const HeadlinePage = styled(PresentationPageWrapper)`
-  background: blue;
-  color: #fff;
+  color: black;
 `
 
 export const PresentationInnerText = styled.div`
@@ -52,6 +57,7 @@ export const PresentationHeadline = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  font-family: ${fonts.bold};
   p {
     margin: 0 auto;
   }
@@ -72,7 +78,7 @@ export const dash = ({ color }) => css`
   content: "";
   width: 50px;
   height: 5px;
-  background: ${color === "invert" ? "white" : "blue"};
+  background: ${color === "invert" ? "white" : "black"};
   display: block;
 `
 
