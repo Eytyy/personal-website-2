@@ -4,11 +4,12 @@ import Gif from "./gif"
 import Headline from "./headline"
 import Text from "./text"
 import SvgSlide from "./svgSlide"
+import Img from "./img"
 
 const PresentationPage = ({ _type, _key, ...props }) => {
   switch (_type) {
     case "presentImage":
-      return <Figure image={props} />
+      return <Img {...props} />
     case "presentText":
       return <Text {...props} />
     case "presentHeadline":

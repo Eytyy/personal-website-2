@@ -8,6 +8,7 @@ function getImageHeight({ width, image }) {
   return Math.floor(width / originalAspectRatio)
 }
 const Figure = ({ image, width = 1200 }) => {
+  if (!image.asset) return null
   const height = getImageHeight({ width, image })
   const imgUrl =
     image &&

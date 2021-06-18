@@ -1,5 +1,6 @@
 import css from "@emotion/css"
 import styled from "@emotion/styled"
+import { fonts } from "../../styles/vars"
 
 export const PresentationWrapper = styled.div`
   height: 100vh;
@@ -92,6 +93,11 @@ export const PresentationHeader = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  .heading,
+  .caption {
+    font-family: ${fonts.bold};
+    letter-spacing: 0.03em;
+  }
   .caption {
     color: black;
   }

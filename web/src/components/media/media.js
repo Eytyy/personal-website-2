@@ -3,7 +3,6 @@ import Video from "./video"
 import Figure from "./figure"
 
 const Media = ({ _type, ...props }) => {
-  console.log(props)
   if (!_type) {
     return null
   }

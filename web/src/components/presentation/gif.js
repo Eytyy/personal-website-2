@@ -3,7 +3,7 @@ import Media from "../media/media"
 import SvgEl from "../media/SvgEl"
 import { PresentationPageWrapper, Deck, PresentationHeader } from "./style"
 
-const Gif = ({ title, content: slides }) => {
+const Gif = ({ title, content: slides, universalDelay }) => {
   const [activeSlide, setActiveSlide] = useState(0)
   const [paused, setPaused] = useState(false)
 
@@ -18,7 +18,7 @@ const Gif = ({ title, content: slides }) => {
 
   useEffect(() => {
     if (!paused) {
-      const defaultDelay = 60
+      const defaultDelay = universalDelay || 60
       const delay = slides[activeSlide]?.delay || defaultDelay
       setTimeout(animate, delay)
     }
@@ -26,7 +26,7 @@ const Gif = ({ title, content: slides }) => {
       clearTimeout(animate)
     }
   }, [animate, paused, activeSlide, slides])
-  console.log(slides)
+
   return (
     <PresentationPageWrapper>
       <PresentationHeader>
