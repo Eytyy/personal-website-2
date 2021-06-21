@@ -17,7 +17,7 @@ const Project = props => {
       return (
         <ProjectElement onClick={() => setActiveProject(_key)} key={_key}>
           {_type === "figure" ? (
-            <Figure image={props} />
+            <Figure width="400" image={props} />
           ) : (
             <VideoThumb {...props} />
           )}

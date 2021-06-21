@@ -9,9 +9,14 @@ function getImageHeight({ width, image }) {
 }
 const Figure = ({ image, width }) => {
   if (!image.asset) return null
-  const height = getImageHeight({ width, image })
+  // const height = getImageHeight({ width, image })
   const imgUrl =
-    image && imageUrlFor(buildImageObj(image)).fit("crop").auto("format").url()
+    image &&
+    imageUrlFor(buildImageObj(image))
+      .fit("crop")
+      .width(width)
+      .auto("format")
+      .url()
   return imgUrl ? <img src={imgUrl} alt={image.alt || ""} /> : <></>
 }
 
