@@ -11,7 +11,6 @@ import { LayoutWrapper } from "../layout/styles"
 
 const Home = ({ data }) => {
   const { state, setActive } = useSiteContext()
-
   const activeProject = state.activeProject
 
   return (

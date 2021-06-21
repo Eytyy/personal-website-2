@@ -1,14 +1,15 @@
 import styled from "@emotion/styled"
 
 export const MainNavigation = styled.nav`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  display: grid;
+  grid-gap: 20px;
   position: fixed;
-  top: 42px;
-  left: 0;
+  top: 0px;
+  bottom: 0px;
+  right: 0;
   padding: 20px;
-  z-index: 2;
+  z-index: 200;
+  align-items: flex-start;
 `
 
 export const NavigationItem = styled.button`
@@ -17,12 +18,13 @@ export const NavigationItem = styled.button`
   padding: 0;
   background: none;
   cursor: pointer;
-  margin: 20px 0;
-  font-size: 32px;
-  width: 45px;
-  height: 45px;
+  font-size: 42px;
   display: flex;
+  color: blue;
   justify-content: center;
   align-items: center;
-  color: blue;
+  svg,
+  path {
+    stroke: currentColor;
+  }
 `

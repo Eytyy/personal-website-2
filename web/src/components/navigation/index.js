@@ -1,5 +1,7 @@
 import React from "react"
-import { MdClose, MdImage, MdTextFields } from "react-icons/md"
+import { MdImage } from "react-icons/md"
+
+import { GrClose, GrLinkNext, GrLinkPrevious } from "react-icons/gr"
 import { useSiteContext } from "../../siteContext"
 import { MainNavigation, NavigationItem } from "./styles"
 
@@ -9,26 +11,38 @@ const Navigation = () => {
     closeProject,
     hideDescription,
     showDescription,
+    showNext,
+    showPrevious,
   } = useSiteContext()
 
   return (
-    <MainNavigation>
-      {state?.activeProject && (
-        <NavigationItem onClick={closeProject}>
-          <MdClose />
-        </NavigationItem>
-      )}
-      {/* {state?.hasDescription && !state?.isDescriptionVisible && (
-        <NavigationItem onClick={showDescription}>
-          <MdTextFields />
-        </NavigationItem>
-      )}
-      {state?.hasDescription && state?.isDescriptionVisible && (
-        <NavigationItem onClick={hideDescription}>
-          <MdImage />
-        </NavigationItem>
-      )} */}
-    </MainNavigation>
+    <>
+      <MainNavigation>
+        {state?.activeProject && (
+          <NavigationItem onClick={closeProject}>
+            <GrClose />
+          </NavigationItem>
+        )}
+        {state?.hasDescription && !state?.isDescriptionVisible && (
+          <NavigationItem onClick={showDescription}>Tt</NavigationItem>
+        )}
+        {state?.hasDescription && state?.isDescriptionVisible && (
+          <NavigationItem onClick={hideDescription}>
+            <MdImage />
+          </NavigationItem>
+        )}
+        {/* {state?.activeProject && (
+          <NavigationItem onClick={showPrevious}>
+            <GrLinkPrevious />
+          </NavigationItem>
+        )}
+        {state?.activeProject && (
+          <NavigationItem onClick={showNext}>
+            <GrLinkNext />
+          </NavigationItem>
+        )} */}
+      </MainNavigation>
+    </>
   )
 }
 

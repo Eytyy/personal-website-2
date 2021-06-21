@@ -84,6 +84,7 @@ const Video = ({ video, active = false }) => {
         </PlayButton>
       )}
       <video
+        autoPlay
         onEnded={onComplete}
         onPlaying={onPlaying}
         onPlay={onPlaying}

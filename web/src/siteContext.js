@@ -1,10 +1,11 @@
-import React, { createContext, useContext, useState } from "react"
+import React, { createContext, useContext, useEffect, useState } from "react"
 
 const SiteContext = createContext()
 
 const initialState = {
-  activeProjectID: null,
+  activeProject: null,
   activeAssetID: null,
+  activeProjectIndex: null,
   hasDescription: false,
   isDescriptionVisible: false,
 }
@@ -30,13 +31,29 @@ export const SiteContextProvider = ({ children, data }) => {
     }))
   }
 
+  function showNext() {
+    console.log("current", state.activeProjectIndex, state.activeAssetID)
+    console.log("next")
+  }
+
+  function showPrevious() {
+    console.log("current", state.activeProjectIndex, state.activeAssetID)
+    console.log("previous")
+  }
+
   function setDescription() {}
 
+  useEffect(() => {}, [state])
+
   function setActive(project, asset_id) {
+    const activeProjectIndex = data?.projects?.all.findIndex(
+      ({ _id }) => project?._id === _id
+    )
     setState(state => ({
       ...state,
       hasDescription: typeof project.description !== "undefined",
       activeProject: { ...project },
+      activeProjectIndex,
       activeAssetID: asset_id,
     }))
   }
@@ -50,6 +67,8 @@ export const SiteContextProvider = ({ children, data }) => {
         closeProject,
         showDescription,
         hideDescription,
+        showNext,
+        showPrevious,
       }}
     >
       {children}

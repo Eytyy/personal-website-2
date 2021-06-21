@@ -6,8 +6,10 @@ export const HeaderWrapper = styled.div`
   top: 0;
   left: 0;
   width: 100%;
+  height: 85px;
   padding: 20px;
-  z-index: 2;
+  z-index: 100;
+  background: #fff;
 `
 
 export const Logo = styled.div`

@@ -1,12 +1,9 @@
 import styled from "@emotion/styled"
-import { headline } from "../../styles/typography"
 import { mq } from "../../styles/utils"
 
 export const MainTitle = styled.h1`
-  font-size: 1rem;
-  margin: 0 0 0.1em;
+  margin: 0.25em 0 1em;
   text-transform: lowercase;
-  text-align: center;
 `
 
 export const ProjectHeader = styled.header`
@@ -21,12 +18,26 @@ export const ProjectElement = styled.div``
 
 export const ProjectDetailsWrapper = styled.article`
   position: fixed;
-  height: calc(100vh - 105px);
+  height: ${({ isDescriptionVisible }) =>
+    isDescriptionVisible ? " calc(100vh)" : " calc(100vh - 170px)"};
   width: calc(100vw - 170px);
-  background: #fff;
-  top: 20px;
+  background: ${({ isDescriptionVisible }) =>
+    isDescriptionVisible
+      ? `rgba(255, 255, 255, 0.95)`
+      : `rgba(255, 255, 255, 0.8)`};
+  transition: all 200ms linear;
+  top: ${({ isDescriptionVisible }) => (isDescriptionVisible ? "0px" : "85px")};
+  padding: ${({ isDescriptionVisible }) =>
+    isDescriptionVisible ? "20px 0px" : "0px 0px"};
   left: 85px;
-  z-index: 10;
+  z-index: ${({ isDescriptionVisible }) =>
+    isDescriptionVisible ? "100" : "10"};
+  font-size: 52px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  ${MainTitle}, h2 {
+    font-size: 0.5em;
+  }
 `
 
 export const Wrapper = styled.div`
@@ -34,7 +45,13 @@ export const Wrapper = styled.div`
   position: relative;
 `
 
-export const ProjecDescriptionWrapper = styled(Wrapper)``
+export const ProjecDescriptionWrapper = styled(Wrapper)`
+  margin-right: -40px;
+  overflow-x: hidden;
+`
+export const ProjecDescriptionInner = styled.div`
+  padding-right: 40px;
+`
 
 export const ProjecMediaWrapper = styled(Wrapper)`
 }

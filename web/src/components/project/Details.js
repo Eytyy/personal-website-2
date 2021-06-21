@@ -4,6 +4,7 @@ import PortableText from "../PortableText"
 import {
   MainTitle,
   ProjecDescriptionWrapper,
+  ProjecDescriptionInner,
   ProjecMediaWrapper,
   ProjectDetailsWrapper,
 } from "./styles"
@@ -19,11 +20,13 @@ const ProjectDetails = ({
   if (!asset && !isDescriptionVisible) return null
 
   return (
-    <ProjectDetailsWrapper>
+    <ProjectDetailsWrapper isDescriptionVisible={isDescriptionVisible}>
       {isDescriptionVisible && description ? (
         <ProjecDescriptionWrapper>
-          <MainTitle>{title}</MainTitle>
-          <PortableText blocks={description} />
+          <ProjecDescriptionInner>
+            <MainTitle>{title}</MainTitle>
+            <PortableText blocks={description} />
+          </ProjecDescriptionInner>
         </ProjecDescriptionWrapper>
       ) : (
         <ProjecMediaWrapper>
