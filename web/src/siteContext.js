@@ -14,10 +14,10 @@ const initialState = {
 export const SiteContextProvider = ({ children, data }) => {
   const [state, setState] = useState(initialState)
 
-  function setActive(project, asset_id, asset_index) {
-    const activeProjectIndex = data?.projects?.all.findIndex(
-      ({ _id }) => project?._id === _id
-    )
+  function setActive(project, asset_id, asset_index, project_index) {
+    const activeProjectIndex =
+      project_index ||
+      data?.projects?.all.findIndex(({ _id }) => project?._id === _id)
 
     setState(state => ({
       ...state,
@@ -51,22 +51,16 @@ export const SiteContextProvider = ({ children, data }) => {
     const { activeProjectIndex } = state
     if (activeProjectIndex === null || !data?.projects?.all) return false
     const projects = data?.projects?.all
-
     const isLastProjectInArray =
       state.activeProjectIndex === projects.length - 1
     const newActiveProjectIndex = isLastProjectInArray
       ? 0
       : activeProjectIndex + 1
     const newActiveProject = projects[newActiveProjectIndex]
+    const asset_index = 0
+    const asset_id = newActiveProject.media[0]._key
 
-    setState(state => ({
-      ...state,
-      hasDescription: typeof newActiveProject?.description !== "undefined",
-      activeProjectIndex: newActiveProjectIndex,
-      activeProject: { ...newActiveProject },
-      activeAssetID: newActiveProject.media[0]._key,
-      activeAssetIndex: 0,
-    }))
+    setActive(newActiveProject, asset_id, asset_index, newActiveProjectIndex)
   }
 
   function showNextSlide() {
@@ -88,15 +82,10 @@ export const SiteContextProvider = ({ children, data }) => {
       ? projects.length - 1
       : activeProjectIndex - 1
     const newActiveProject = projects[newActiveProjectIndex]
+    const asset_id = newActiveProject.media[0]._key
+    const asset_index = 0
 
-    setState(state => ({
-      ...state,
-      hasDescription: typeof newActiveProject?.description !== "undefined",
-      activeProjectIndex: newActiveProjectIndex,
-      activeProject: { ...newActiveProject },
-      activeAssetID: newActiveProject.media[0]._key,
-      activeAssetIndex: 0,
-    }))
+    setActive(newActiveProject, asset_id, asset_index, newActiveProjectIndex)
   }
 
   function showPreviousSlide() {
@@ -110,14 +99,13 @@ export const SiteContextProvider = ({ children, data }) => {
   }
 
   function updateVisibleContent(direction) {
-    const { activeAssetIndex, activeProject } = state
+    const { activeAssetIndex, activeProject, isDescriptionVisible } = state
     if (activeAssetIndex === null || !activeProject) return false
 
     const { media } = activeProject
-
     if (direction === "next") {
       // if last slide, load next project, otherwise show next slide
-      if (activeAssetIndex === media?.length - 1) {
+      if (activeAssetIndex === media?.length - 1 || isDescriptionVisible) {
         showNextProject()
       } else {
         showNextSlide()
@@ -126,7 +114,7 @@ export const SiteContextProvider = ({ children, data }) => {
 
     if (direction === "prev") {
       // if first slide, load previous project, otherwise show previous slide
-      if (activeAssetIndex == 0) {
+      if (activeAssetIndex == 0 || isDescriptionVisible) {
         showPreviousProject()
       } else {
         showPreviousSlide()
