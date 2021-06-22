@@ -31,16 +31,17 @@ const Navigation = () => {
             <MdImage />
           </NavigationItem>
         )}
-        {/* {state?.activeProject && (
-          <NavigationItem onClick={showPrevious}>
-            <GrLinkPrevious />
-          </NavigationItem>
-        )}
+
         {state?.activeProject && (
           <NavigationItem onClick={showNext}>
             <GrLinkNext />
           </NavigationItem>
-        )} */}
+        )}
+        {state?.activeProject && (
+          <NavigationItem onClick={showPrevious}>
+            <GrLinkPrevious />
+          </NavigationItem>
+        )}
       </MainNavigation>
     </>
   )

@@ -17,6 +17,7 @@ const ProjectDetails = ({
   isDescriptionVisible,
 }) => {
   const asset = media?.find(({ _key }) => _key === assetId)
+  console.log(assetId)
   if (!asset && !isDescriptionVisible) return null
 
   return (

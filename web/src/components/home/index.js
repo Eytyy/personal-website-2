@@ -11,8 +11,7 @@ import { LayoutWrapper } from "../layout/styles"
 
 const Home = ({ data }) => {
   const { state, setActive } = useSiteContext()
-  const activeProject = state.activeProject
-
+  const { activeProject, activeAssetID, isDescriptionVisible } = state
   return (
     <LayoutWrapper>
       <Header />
@@ -25,8 +24,8 @@ const Home = ({ data }) => {
       {activeProject && (
         <ProjectDetails
           {...activeProject}
-          assetId={state.activeAssetID}
-          isDescriptionVisible={state.isDescriptionVisible}
+          assetId={activeAssetID}
+          isDescriptionVisible={isDescriptionVisible}
         />
       )}
       <ContactSimple />

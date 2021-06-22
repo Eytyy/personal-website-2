@@ -7,15 +7,18 @@ import { ProjectElement } from "./styles"
 const Project = props => {
   const { media, setActive } = props
 
-  function setActiveProject(asset_id) {
-    setActive({ ...props }, asset_id)
+  function setActiveProject(asset_id, asset_index) {
+    setActive({ ...props }, asset_id, asset_index)
   }
 
   return (
     media &&
-    media.map(({ _type, _key, ...props }) => {
+    media.map(({ _type, _key, ...props }, index) => {
       return (
-        <ProjectElement onClick={() => setActiveProject(_key)} key={_key}>
+        <ProjectElement
+          onClick={() => setActiveProject(_key, index)}
+          key={_key}
+        >
           {_type === "figure" ? (
             <Figure width="400" image={props} />
           ) : (
