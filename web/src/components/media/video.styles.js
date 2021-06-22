@@ -1,5 +1,5 @@
 import styled from "@emotion/styled"
-import { mq } from "../../styles/utils"
+import { at, breakpoints } from "../../styles/utils"
 import { css } from "@emotion/core"
 import { MediaButton } from "./media.styles"
 
@@ -62,20 +62,25 @@ export const BottomControls = styled.div`
   justify-content: space-between;
   padding: 0px 40px;
 
-  ${mq.tablet} {
+  ${at(breakpoints.tablet)} {
     padding: 0;
   }
 `
 
 export const PlayButton = styled(MediaButton)`
-  width: 60px;
-  height: 60px;
-  font-size: 42px;
+  width: 32px;
+  height: 32px;
+  font-size: 22px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
+  ${at(breakpoints.tablet)} {
+    width: 60px;
+    height: 60px;
+    font-size: 42px;
+  }
 `
 
 export const VideoThumbnail = styled.div`

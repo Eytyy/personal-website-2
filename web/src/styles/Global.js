@@ -1,7 +1,7 @@
 import React from "react"
 import { Global, css } from "@emotion/core"
 import { fonts } from "./vars"
-import { mq } from "./utils"
+import { breakpoints, at } from "./utils"
 
 import Bold from "../fonts/GT-Eesti-Text-Bold.woff2"
 import Light from "../fonts/GT-Eesti-Text-Light.woff2"
@@ -26,7 +26,7 @@ const styles = css`
   body {
     font-family: ${fonts.regular};
     font-size: 14px;
-    ${mq.tablet} {
+    ${at(breakpoints.tablet)} {
       font-size: 16px;
     }
   }

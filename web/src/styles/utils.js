@@ -15,28 +15,17 @@ export const spacing = {
   big: "120px",
 }
 
-export let mq = {}
-
-Object.keys(breakpoints).forEach(key => {
-  mq[key] = `@media (min-width: ${breakpoints[key]}px)`
-})
-
-export const wrapFull = css`
-  ${mq.desktop} {
-  }
-  ${mq.bigscreen} {
-  }
-`
+export const at = breakpoint => `@media (min-width: ${breakpoint}px)`
 
 export const wrapFixed = css`
   max-width: 1200px;
   padding: 0 ${spacing.small};
   margin: 0 auto;
-  ${mq.desktop} {
+  ${at(breakpoints.desktop)} {
     max-width: 1440px;
     padding: 0 60px;
   }
-  ${mq.bigscreen} {
+  ${at(breakpoints.bigscreen)} {
     max-width: 1920px;
     padding: 0 80px;
   }

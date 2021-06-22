@@ -1,5 +1,5 @@
 import styled from "@emotion/styled"
-import { mq } from "../../styles/utils"
+import { at, breakpoints } from "../../styles/utils"
 
 export const MainTitle = styled.h1`
   margin: 0.25em 0 1em;
@@ -9,7 +9,7 @@ export const MainTitle = styled.h1`
 export const ProjectHeader = styled.header`
   margin-bottom: 30px;
   grid-column: auto / span 2;
-  ${mq.tablet} {
+  ${at(breakpoints.tablet)} {
     margin-bottom: 0px;
   }
 `
@@ -19,24 +19,40 @@ export const ProjectElement = styled.div``
 export const ProjectDetailsWrapper = styled.article`
   position: fixed;
   height: ${({ isDescriptionVisible }) =>
-    isDescriptionVisible ? " calc(100vh)" : " calc(100vh - 170px)"};
-  width: calc(100vw - 170px);
+    isDescriptionVisible ? " calc(100vh)" : " calc(100vh - 104px)"};
+  width: calc(100vw - 104px);
   background: ${({ isDescriptionVisible }) =>
     isDescriptionVisible
       ? `rgba(255, 255, 255, 0.95)`
       : `rgba(255, 255, 255, 0.8)`};
   transition: all 200ms linear;
-  top: ${({ isDescriptionVisible }) => (isDescriptionVisible ? "0px" : "85px")};
+  top: ${({ isDescriptionVisible }) => (isDescriptionVisible ? "0px" : "52px")};
   padding: ${({ isDescriptionVisible }) =>
-    isDescriptionVisible ? "20px 0px" : "0px 0px"};
-  left: 85px;
+    isDescriptionVisible ? "10px 0px" : "0px 0px"};
+  left: 52px;
   z-index: ${({ isDescriptionVisible }) =>
     isDescriptionVisible ? "100" : "10"};
-  font-size: 52px;
+  font-size: 20px;
   overflow-y: scroll;
   overflow-x: hidden;
   ${MainTitle}, h2 {
-    font-size: 0.5em;
+    font-size: 0.75em;
+  }
+  ${at(breakpoints.tablet)} {
+    font-size: 52px;
+    left: 85px;
+    height: ${({ isDescriptionVisible }) =>
+      isDescriptionVisible ? " calc(100vh)" : " calc(100vh - 170px)"};
+    top: ${({ isDescriptionVisible }) =>
+      isDescriptionVisible ? "0px" : "52px"};
+    padding: ${({ isDescriptionVisible }) =>
+      isDescriptionVisible ? "20px 0px" : "0px 0px"};
+    margin-bottom: 0px;
+    width: calc(100vw - 170px);
+
+    ${MainTitle}, h2 {
+      font-size: 0.5em;
+    }
   }
 `
 

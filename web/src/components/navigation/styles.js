@@ -1,4 +1,5 @@
 import styled from "@emotion/styled"
+import { at, breakpoints } from "../../styles/utils"
 
 export const MainNavigation = styled.nav`
   display: grid;
@@ -7,9 +8,12 @@ export const MainNavigation = styled.nav`
   top: 0px;
   bottom: 0px;
   right: 0;
-  padding: 20px;
+  padding: 10px;
   z-index: 200;
   align-items: flex-start;
+  ${at(breakpoints.tablet)} {
+    padding: 20px;
+  }
 `
 
 export const NavigationItem = styled.button`
@@ -18,7 +22,7 @@ export const NavigationItem = styled.button`
   padding: 0;
   background: none;
   cursor: pointer;
-  font-size: 42px;
+  font-size: 32px;
   display: flex;
   color: blue;
   justify-content: center;
@@ -26,5 +30,8 @@ export const NavigationItem = styled.button`
   svg,
   path {
     stroke: currentColor;
+  }
+  ${at(breakpoints.tablet)} {
+    font-size: 42px;
   }
 `

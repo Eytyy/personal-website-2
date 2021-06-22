@@ -1,6 +1,6 @@
 import styled from "@emotion/styled"
 import { headline } from "../../styles/typography"
-import { mq } from "../../styles/utils"
+import { at, breakpoints } from "../../styles/utils"
 
 export const ContactLink = styled.a`
   color: blue;
@@ -22,15 +22,15 @@ export const ContactWrapper = styled.section`
       color: black;
     }
 
-    ${mq.tablet} {
+    ${at(breakpoints.tablet)} {
       font-size: 10em;
     }
 
-    ${mq.desktop} {
+    ${at(breakpoints.desktop)} {
       font-size: 10em;
     }
 
-    ${mq.bigscreen} {
+    ${at(breakpoints.bigscreen)} {
       font-size: 16em;
     }
   }

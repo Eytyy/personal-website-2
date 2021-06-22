@@ -1,11 +1,13 @@
 import styled from "@emotion/styled"
+import { at, breakpoints } from "../../styles/utils"
 
 export const LayoutWrapper = styled.div`
-  padding: 85px 85px 0px;
-  height: calc(100vh - 85px);
+  padding: 52px 52px 0px;
+  height: calc(100vh - 52px);
   overflow-y: scroll;
-  main {
-    height: 100%;
+  ${at(breakpoints.tablet)} {
+    height: calc(100vh - 85px);
+    padding: 85px 85px 0px;
   }
 `
 
