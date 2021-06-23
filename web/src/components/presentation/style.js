@@ -9,7 +9,7 @@ export const ImageWrapper = styled.div`
 `
 
 export const PresentationWrapper = styled.div`
-  height: 100vh;
+  height: var(--app-height);
   width: 100%;
   color: black;
   .svg_wrapper {

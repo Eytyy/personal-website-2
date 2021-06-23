@@ -23,6 +23,10 @@ const styles = css`
     font-style: normal;
   }
 
+  :root {
+    --app-height: 100%;
+  }
+
   body {
     font-family: ${fonts.regular};
     font-size: 14px;

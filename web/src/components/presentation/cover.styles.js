@@ -4,6 +4,6 @@ import styled from "@emotion/styled"
 export const CoverWrapper = styled.div`
   background: blue;
   color: white;
-  height: 100vh;
+  height: var(--app-height);
   width: 100%;
 `

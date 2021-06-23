@@ -3,7 +3,7 @@ import React from "react"
 import { useState, useRef, useEffect } from "react"
 import { MdPause, MdPlayArrow } from "react-icons/md"
 
-import { VideoWrapper, PlayButton } from "./video.styles"
+import { VideoWrapper, PlayButton, VideoControls } from "./video.styles"
 
 const Video = ({ video, active = false }) => {
   const { file } = video
@@ -74,15 +74,6 @@ const Video = ({ video, active = false }) => {
   const { playing } = state
   return (
     <VideoWrapper>
-      {playing ? (
-        <PlayButton onClick={ToggleVideo}>
-          <MdPause />
-        </PlayButton>
-      ) : (
-        <PlayButton onClick={ToggleVideo}>
-          <MdPlayArrow />
-        </PlayButton>
-      )}
       <video
         autoPlay
         onEnded={onComplete}
@@ -95,6 +86,18 @@ const Video = ({ video, active = false }) => {
         src={file.asset.url}
         className="video"
       />
+
+      <VideoControls>
+        {playing ? (
+          <PlayButton onClick={ToggleVideo}>
+            <MdPause />
+          </PlayButton>
+        ) : (
+          <PlayButton onClick={ToggleVideo}>
+            <MdPlayArrow />
+          </PlayButton>
+        )}
+      </VideoControls>
     </VideoWrapper>
   )
 }

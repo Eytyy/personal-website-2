@@ -18,18 +18,19 @@ export const ProjectElement = styled.div``
 
 export const ProjectDetailsWrapper = styled.article`
   position: fixed;
-  height: ${({ isDescriptionVisible }) =>
-    isDescriptionVisible ? " calc(100vh)" : " calc(100vh - 104px)"};
-  width: calc(100vw - 104px);
+  height: var(--app-height);
+  width: ${({ isDescriptionVisible }) =>
+    isDescriptionVisible ? "calc(100vw - 104px)" : "100vw"};
   background: ${({ isDescriptionVisible }) =>
     isDescriptionVisible
       ? `rgba(255, 255, 255, 0.95)`
       : `rgba(255, 255, 255, 0.8)`};
   transition: all 200ms linear;
-  top: ${({ isDescriptionVisible }) => (isDescriptionVisible ? "0px" : "52px")};
+  top: 0px;
   padding: ${({ isDescriptionVisible }) =>
-    isDescriptionVisible ? "10px 0px" : "0px 0px"};
-  left: 52px;
+    isDescriptionVisible ? "10px 0px" : "0px 0px 52px"};
+  left: ${({ isDescriptionVisible }) =>
+    isDescriptionVisible ? "52px" : "0px"};
   z-index: ${({ isDescriptionVisible }) =>
     isDescriptionVisible ? "100" : "10"};
   font-size: 20px;
@@ -42,7 +43,9 @@ export const ProjectDetailsWrapper = styled.article`
     font-size: 52px;
     left: 85px;
     height: ${({ isDescriptionVisible }) =>
-      isDescriptionVisible ? " calc(100vh)" : " calc(100vh - 170px)"};
+      isDescriptionVisible
+        ? "var(--app-height)"
+        : " calc(var(--app-height) - 170px)"};
     top: ${({ isDescriptionVisible }) =>
       isDescriptionVisible ? "0px" : "52px"};
     padding: ${({ isDescriptionVisible }) =>

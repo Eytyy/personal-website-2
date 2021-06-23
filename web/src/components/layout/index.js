@@ -1,19 +1,24 @@
-import React from "react"
+import React, { useLayoutEffect } from "react"
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
 
 import Global from "../../styles/Global.js"
 
-export const query = graphql`
-  query SiteTitleQuery {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-  }
-`
 const Layout = ({ children }) => {
+  // alternative way to using full view port height instead of 100vh
+  // to avoid common layout issues on mobile.
+  useLayoutEffect(() => {
+    const appHeight = () => {
+      const doc = document.documentElement
+      doc.style.setProperty("--app-height", `${window.innerHeight}px`)
+    }
+    appHeight()
+
+    window.addEventListener("resize", appHeight)
+    return function cleanup() {
+      window.removeEventListener("resize", appHeight)
+    }
+  }, [])
+
   return (
     <>
       <Global />

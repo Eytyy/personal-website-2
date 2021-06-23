@@ -1,7 +1,25 @@
 import styled from "@emotion/styled"
 import { at, breakpoints } from "../../styles/utils"
 import { css } from "@emotion/core"
-import { MediaButton } from "./media.styles"
+
+export const MediaButton = styled.button`
+  background: none;
+  appearance: none;
+  width: 45px;
+  height: 45px;
+  border-radius: 100%;
+  color: blue;
+  border: 3px solid blue;
+  box-shadow: 0;
+  outline: none;
+  display: block;
+  cursor: pointer;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s;
+`
 
 export const VideoWrapper = styled.div`
   position: relative;
@@ -20,25 +38,11 @@ export const VideoCaption = styled.div`
 `
 
 export const VideoControls = styled.div`
-  position: absolute;
-  left: 0;
+  position: fixed;
+  left: 10px;
   right: 0;
-  top: 0;
-  bottom: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  z-index: 2;
-  .video-btn {
-    display: block;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-  }
+  bottom: 10px;
+  z-index: 100;
 `
 
 const showBottomControls = css`
@@ -71,10 +75,6 @@ export const PlayButton = styled(MediaButton)`
   width: 32px;
   height: 32px;
   font-size: 22px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   z-index: 2;
   ${at(breakpoints.tablet)} {
     width: 60px;
@@ -87,4 +87,10 @@ export const VideoThumbnail = styled.div`
   height: 100%;
   width: 100%;
   position: relative;
+  ${PlayButton} {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 `
