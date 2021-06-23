@@ -24,6 +24,7 @@ export const PresentationWrapper = styled.div`
     object-position: center;
   }
 `
+
 export const PresentationPageWrapper = styled.div`
   position: relative;
   height: 100%;

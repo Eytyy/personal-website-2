@@ -20,22 +20,25 @@ export const ProjectDetailsWrapper = styled.article`
   position: fixed;
   height: var(--app-height);
   width: ${({ isDescriptionVisible }) =>
-    isDescriptionVisible ? "calc(100vw - 104px)" : "100vw"};
+    isDescriptionVisible ? "100%" : "100vw"};
+  padding: ${({ isDescriptionVisible, type }) =>
+    type === "videoEmbed"
+      ? "52px"
+      : isDescriptionVisible
+      ? "10px 52px 0px"
+      : "0px"};
+  top: 0px;
+  left: 0px;
+  z-index: 10;
+  overflow-y: scroll;
+  overflow-x: hidden;
+
   background: ${({ isDescriptionVisible }) =>
     isDescriptionVisible
       ? `rgba(255, 255, 255, 0.95)`
-      : `rgba(255, 255, 255, 0.8)`};
-  transition: all 200ms linear;
-  top: 0px;
-  padding: ${({ isDescriptionVisible }) =>
-    isDescriptionVisible ? "10px 0px" : "0px 0px 52px"};
-  left: ${({ isDescriptionVisible }) =>
-    isDescriptionVisible ? "52px" : "0px"};
-  z-index: ${({ isDescriptionVisible }) =>
-    isDescriptionVisible ? "100" : "10"};
+      : `rgba(255, 255, 255, 0.25)`};
   font-size: 20px;
-  overflow-y: scroll;
-  overflow-x: hidden;
+
   ${MainTitle}, h2 {
     font-size: 0.75em;
   }
@@ -65,11 +68,12 @@ export const Wrapper = styled.div`
 `
 
 export const ProjecDescriptionWrapper = styled(Wrapper)`
-  margin-right: -40px;
+  margin-right: -60px;
   overflow-x: hidden;
 `
 export const ProjecDescriptionInner = styled.div`
-  padding-right: 40px;
+  padding-right: 60px;
+  padding-bottom: 52px;
 `
 
 export const ProjecMediaWrapper = styled(Wrapper)`

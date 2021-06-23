@@ -10,8 +10,8 @@ export const HeaderWrapper = styled.div`
   height: 52px;
   padding: 10px;
   z-index: 100;
-  background: #fff;
   ${at(breakpoints.tablet)} {
+    background: #fff;
     padding: 20px;
     height: 85px;
   }

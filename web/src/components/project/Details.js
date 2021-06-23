@@ -18,9 +18,12 @@ const ProjectDetails = ({
 }) => {
   const asset = media?.find(({ _key }) => _key === assetId)
   if (!asset && !isDescriptionVisible) return null
-
+  console.log(asset._type)
   return (
-    <ProjectDetailsWrapper isDescriptionVisible={isDescriptionVisible}>
+    <ProjectDetailsWrapper
+      type={asset._type}
+      isDescriptionVisible={isDescriptionVisible}
+    >
       {isDescriptionVisible && description ? (
         <ProjecDescriptionWrapper>
           <ProjecDescriptionInner>
