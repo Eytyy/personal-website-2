@@ -47,7 +47,7 @@ export const ProjectDetailsWrapper = styled.article`
         ? "var(--app-height)"
         : " calc(var(--app-height) - 170px)"};
     top: ${({ isDescriptionVisible }) =>
-      isDescriptionVisible ? "0px" : "52px"};
+      isDescriptionVisible ? "0px" : "85px"};
     padding: ${({ isDescriptionVisible }) =>
       isDescriptionVisible ? "20px 0px" : "0px 0px"};
     margin-bottom: 0px;

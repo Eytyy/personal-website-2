@@ -43,31 +43,9 @@ export const VideoControls = styled.div`
   right: 0;
   bottom: 10px;
   z-index: 100;
-`
-
-const showBottomControls = css`
-  height: auto;
-  opacity: 1;
-  margin-top: 40px;
-`
-const hideBottomControls = css`
-  margin-top: 0;
-  height: 0;
-  overflow: hidden;
-  opacity: 0;
-`
-
-export const BottomControls = styled.div`
-  transition: 1s;
-  ${props => (props.playing ? showBottomControls : hideBottomControls)}
-  width: 100%;
-  z-index: 2;
-  display: flex;
-  justify-content: space-between;
-  padding: 0px 40px;
-
   ${at(breakpoints.tablet)} {
-    padding: 0;
+    left: 20px;
+    bottom: 20px;
   }
 `
 
@@ -77,12 +55,11 @@ export const PlayButton = styled(MediaButton)`
   font-size: 22px;
   z-index: 2;
   ${at(breakpoints.tablet)} {
-    width: 60px;
-    height: 60px;
-    font-size: 42px;
+    width: 42px;
+    height: 42px;
+    font-size: 32px;
   }
 `
-
 export const VideoThumbnail = styled.div`
   height: 100%;
   width: 100%;
