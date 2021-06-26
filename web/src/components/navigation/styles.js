@@ -6,12 +6,12 @@ export const MainNavigation = styled.nav`
   grid-gap: 20px;
   position: fixed;
   top: 0px;
-  bottom: 0px;
   right: 0;
   padding: 10px;
   z-index: 200;
   align-items: flex-start;
   grid-auto-rows: 1fr;
+  height: var(--app-height);
   ${at(breakpoints.tablet)} {
     padding: 20px;
   }
