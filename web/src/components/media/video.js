@@ -75,7 +75,6 @@ const Video = ({ video, active = false }) => {
   return (
     <VideoWrapper>
       <video
-        muted
         autoPlay
         onEnded={onComplete}
         onPlaying={onPlaying}

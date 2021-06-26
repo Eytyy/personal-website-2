@@ -10,10 +10,16 @@ export const HeaderWrapper = styled.div`
   height: 52px;
   padding: 10px;
   z-index: 100;
+  display: grid;
+  grid-template-columns: min-content max-content;
+  align-items: center;
+  gap: 10px;
+
   ${at(breakpoints.tablet)} {
     background: #fff;
     padding: 20px;
     height: 85px;
+    gap: 20px;
   }
 `
 

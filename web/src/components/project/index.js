@@ -3,15 +3,16 @@ import { useSiteContext } from "../../siteContext"
 import Media from "../media/media"
 import PortableText from "../PortableText"
 import {
-  MainTitle,
   ProjecDescriptionWrapper,
   ProjecDescriptionInner,
   ProjecMediaWrapper,
   ProjectDetailsWrapper,
+  Caption,
+  MainTitle,
 } from "./styles"
 
 const Project = props => {
-  const { title, description, media, isDescriptionVisible } = props
+  const { description, media, title } = props
   const { state, setActive } = useSiteContext()
 
   const asset =
@@ -32,16 +33,23 @@ const Project = props => {
       type={asset._type}
       isDescriptionVisible={state.isDescriptionVisible}
     >
+      <MainTitle isDescriptionVisible={state.isDescriptionVisible}>
+        {title}
+      </MainTitle>
       {state.isDescriptionVisible && description ? (
         <ProjecDescriptionWrapper>
           <ProjecDescriptionInner>
-            <MainTitle>{title}</MainTitle>
             <PortableText blocks={description} />
           </ProjecDescriptionInner>
         </ProjecDescriptionWrapper>
       ) : (
         <ProjecMediaWrapper>
           <Media {...asset} />
+          <Caption type={asset?._type}>
+            {`${state?.activeAssetIndex + 1} of ${media?.length - 1}: ${
+              asset.alt || "untitled"
+            }`}
+          </Caption>
         </ProjecMediaWrapper>
       )}
     </ProjectDetailsWrapper>
