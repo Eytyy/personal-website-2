@@ -1,3 +1,4 @@
+import { graphql, navigate, useStaticQuery } from "gatsby"
 import React, { createContext, useContext, useEffect, useState } from "react"
 
 const SiteContext = createContext()
@@ -11,13 +12,37 @@ const initialState = {
   isDescriptionVisible: false,
 }
 
-export const SiteContextProvider = ({ children, data }) => {
-  const [state, setState] = useState(initialState)
+const query = graphql`
+  query ProjectsQuery {
+    projects: allSanityProject {
+      all: nodes {
+        title
+        id
+        slug {
+          current
+        }
+        media: _rawMainMedia(resolveReferences: { maxDepth: 10 })
+        description: _rawDescription(resolveReferences: { maxDepth: 10 })
+      }
+    }
+  }
+`
 
+export const SiteContextProvider = ({ children }) => {
+  // fetch project
+  const data = useStaticQuery(query)
+
+  // initailzse state with fetched data
+  const [state, setState] = useState(() => ({
+    ...initialState,
+    projects: [...data.projects.all],
+  }))
+
+  // set active project
   function setActive(project, asset_id, asset_index, project_index) {
     const activeProjectIndex =
       project_index ||
-      data?.projects?.all.findIndex(({ _id }) => project?._id === _id)
+      data?.projects?.all?.findIndex(({ id }) => project?.id === id)
 
     setState(state => ({
       ...state,
@@ -30,7 +55,11 @@ export const SiteContextProvider = ({ children, data }) => {
   }
 
   function closeProject() {
-    setState(initialState)
+    navigate("/")
+    setState(state => ({
+      ...state,
+      ...initialState,
+    }))
   }
 
   function showDescription() {
@@ -49,6 +78,7 @@ export const SiteContextProvider = ({ children, data }) => {
 
   function showNextProject() {
     const { activeProjectIndex } = state
+
     if (activeProjectIndex === null || !data?.projects?.all) return false
     const projects = data?.projects?.all
     const isLastProjectInArray =
@@ -61,6 +91,11 @@ export const SiteContextProvider = ({ children, data }) => {
     const asset_id = newActiveProject.media[0]._key
 
     setActive(newActiveProject, asset_id, asset_index, newActiveProjectIndex)
+    if (newActiveProject?.slug?.current) {
+      navigate(`/work/${newActiveProject?.slug?.current}`)
+    } else {
+      closeProject()
+    }
   }
 
   function showNextSlide() {
@@ -82,10 +117,16 @@ export const SiteContextProvider = ({ children, data }) => {
       ? projects.length - 1
       : activeProjectIndex - 1
     const newActiveProject = projects[newActiveProjectIndex]
+
     const asset_id = newActiveProject.media[0]._key
     const asset_index = 0
 
     setActive(newActiveProject, asset_id, asset_index, newActiveProjectIndex)
+    if (newActiveProject?.slug?.current) {
+      navigate(`/work/${newActiveProject?.slug?.current}`)
+    } else {
+      closeProject()
+    }
   }
 
   function showPreviousSlide() {
@@ -101,7 +142,6 @@ export const SiteContextProvider = ({ children, data }) => {
   function updateVisibleContent(direction) {
     const { activeAssetIndex, activeProject, isDescriptionVisible } = state
     if (activeAssetIndex === null || !activeProject) return false
-
     const { media } = activeProject
     if (direction === "next") {
       // if last slide, load next project, otherwise show next slide
@@ -138,6 +178,7 @@ export const SiteContextProvider = ({ children, data }) => {
     <SiteContext.Provider
       value={{
         state,
+        data,
         setActive,
         setDescription,
         closeProject,

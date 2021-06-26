@@ -67,7 +67,43 @@ async function createPresentations(
   })
 }
 
+async function createProjects(
+  pathPrefix = "/work",
+  graphql,
+  actions,
+  reporter
+) {
+  const { createPage } = actions
+  const result = await graphql(`
+    {
+      allSanityProject {
+        nodes {
+          id
+          slug {
+            current
+          }
+        }
+      }
+    }
+  `)
+
+  if (result.errors) throw result.errors
+
+  const projects = (result.data.allSanityProject || {}).nodes || []
+  projects.forEach(project => {
+    const { id, slug = {} } = project
+    const path = [pathPrefix, slug.current, "/"].join("")
+    reporter.info(`Creating Project: ${path}`)
+    createPage({
+      path,
+      component: require.resolve("./src/templates/project.js"),
+      context: { id },
+    })
+  })
+}
+
 exports.createPages = async ({ graphql, actions, reporter }) => {
   await createLandingPages("/", graphql, actions, reporter)
+  await createProjects("/work/", graphql, actions, reporter)
   await createPresentations("/presentations", graphql, actions, reporter)
 }

@@ -3,23 +3,29 @@ import { ContactLink } from "./Contact.styles"
 
 const ContactSimple = () => {
   return (
-    <>
+    <div>
       <ContactLink
         target="_blank"
         rel="noopener noreferrer"
         href="mailto:e.tayyem@gmail.com"
-      ></ContactLink>
+      >
+        send an email
+      </ContactLink>
       <ContactLink
         target="_blank"
         rel="noopener noreferrer"
         href="tel:00962796659649"
-      ></ContactLink>
+      >
+        call me
+      </ContactLink>
       <ContactLink
         target="_blank"
         rel="noopener noreferrer"
         href="https://github.com/Eytyy"
-      ></ContactLink>
-    </>
+      >
+        gitHUBz
+      </ContactLink>
+    </div>
   )
 }
 

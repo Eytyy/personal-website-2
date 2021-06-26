@@ -1,4 +1,5 @@
 import styled from "@emotion/styled"
+import { Link } from "gatsby"
 import { at, breakpoints } from "../../styles/utils"
 
 export const MainTitle = styled.h1`
@@ -14,7 +15,7 @@ export const ProjectHeader = styled.header`
   }
 `
 
-export const ProjectElement = styled.div``
+export const ProjectElement = styled.a``
 
 export const ProjectDetailsWrapper = styled.article`
   position: fixed;
@@ -22,7 +23,7 @@ export const ProjectDetailsWrapper = styled.article`
   width: ${({ isDescriptionVisible }) =>
     isDescriptionVisible ? "100%" : "100vw"};
   padding: ${({ isDescriptionVisible, type }) =>
-    type === "videoEmbed"
+    type === "SanityVideoEmbed"
       ? "52px"
       : isDescriptionVisible
       ? "10px 52px 0px"
