@@ -19,6 +19,7 @@ export const MediaButton = styled.button`
   justify-content: center;
   align-items: center;
   transition: 0.3s;
+  padding: 0px;
 `
 
 export const VideoWrapper = styled.div`
