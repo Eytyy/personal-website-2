@@ -16,7 +16,6 @@ export const HeaderWrapper = styled.div`
   gap: 10px;
 
   ${at(breakpoints.tablet)} {
-    background: #fff;
     padding: 20px;
     height: 85px;
     gap: 20px;

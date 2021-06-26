@@ -45,7 +45,6 @@ export const ProjectDetailsWrapper = styled.article`
 
   background: #fff;
   font-size: 20px;
-  z-index: 101;
 
   ${at(breakpoints.tablet)} {
     font-size: 52px;
