@@ -1,6 +1,5 @@
-import React, { useEffect, useLayoutEffect } from "react"
+import React, { useLayoutEffect } from "react"
 import PropTypes from "prop-types"
-import { useStaticQuery } from "gatsby"
 
 import Global from "../../styles/Global.js"
 import Work from "../work/index.js"

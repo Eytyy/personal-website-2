@@ -1,5 +1,11 @@
 import { graphql, navigate, useStaticQuery } from "gatsby"
-import React, { createContext, useContext, useEffect, useState } from "react"
+import React, {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from "react"
 
 const SiteContext = createContext()
 
@@ -8,8 +14,7 @@ const initialState = {
   activeAssetID: null,
   activeProjectIndex: null,
   activeAssetIndex: null,
-  hasDescription: false,
-  isDescriptionVisible: false,
+  subtitle: null,
 }
 
 const query = graphql`
@@ -38,141 +43,145 @@ export const SiteContextProvider = ({ children }) => {
     projects: [...data.projects.all],
   }))
 
-  // set active project
-  function setActive(project, asset_id, asset_index, project_index) {
-    const activeProjectIndex =
-      project_index ||
-      data?.projects?.all?.findIndex(({ id }) => project?.id === id)
-
-    setState(state => ({
-      ...state,
-      hasDescription: typeof project.description !== "undefined",
-      activeProject: { ...project },
-      activeProjectIndex,
-      activeAssetID: asset_id,
-      activeAssetIndex: asset_index,
-    }))
-  }
-
-  function closeProject() {
+  const closeProject = useCallback(() => {
     navigate("/")
     setState(state => ({
       ...state,
       ...initialState,
     }))
-  }
+  }, [])
 
-  function showDescription() {
-    setState(state => ({
-      ...state,
-      isDescriptionVisible: true,
-    }))
-  }
+  // set active project and active asset
+  const setActive = useCallback(
+    (project, asset_id, asset_index, project_index) => {
+      const activeProjectIndex =
+        project_index ||
+        data?.projects?.all?.findIndex(({ id }) => project?.id === id)
 
-  function hideDescription() {
-    setState(state => ({
-      ...state,
-      isDescriptionVisible: false,
-    }))
-  }
+      setState(state => ({
+        ...state,
+        activeProject: { ...project },
+        activeProjectIndex,
+        activeAssetID: asset_id,
+        activeAssetIndex: asset_index,
+      }))
+    },
+    [data]
+  )
 
-  function showNextProject() {
-    const { activeProjectIndex } = state
+  const updateActiveProject = useCallback(
+    newActiveProjectIndex => {
+      const projects = data?.projects?.all
+      const newActiveProject = projects[newActiveProjectIndex]
+      const asset_index = 0
+      const asset_id = newActiveProject.media[0]._key
 
-    if (activeProjectIndex === null || !data?.projects?.all) return false
-    const projects = data?.projects?.all
-    const isLastProjectInArray =
-      state.activeProjectIndex === projects.length - 1
-    const newActiveProjectIndex = isLastProjectInArray
-      ? 0
-      : activeProjectIndex + 1
-    const newActiveProject = projects[newActiveProjectIndex]
-    const asset_index = 0
-    const asset_id = newActiveProject.media[0]._key
+      setActive(newActiveProject, asset_id, asset_index, newActiveProjectIndex)
+      if (newActiveProject?.slug?.current) {
+        navigate(`/work/${newActiveProject?.slug?.current}`)
+      } else {
+        closeProject()
+      }
+    },
+    [closeProject, setActive, data]
+  )
 
-    setActive(newActiveProject, asset_id, asset_index, newActiveProjectIndex)
-    if (newActiveProject?.slug?.current) {
-      navigate(`/work/${newActiveProject?.slug?.current}`)
-    } else {
-      closeProject()
-    }
-  }
-
-  function showNextSlide() {
-    const newSlideIndex = state.activeAssetIndex + 1
-    setState(state => ({
-      ...state,
-      activeAssetIndex: newSlideIndex,
-      activeAssetID: state.activeProject.media[newSlideIndex]._key,
-    }))
-  }
-
-  function showPreviousProject() {
-    const { activeProjectIndex } = state
-    const projects = data?.projects?.all
-    if (activeProjectIndex === null || !projects) return false
-
-    const isFirstProjectInArray = state.activeProjectIndex === 0
-    const newActiveProjectIndex = isFirstProjectInArray
-      ? projects.length - 1
-      : activeProjectIndex - 1
-    const newActiveProject = projects[newActiveProjectIndex]
-
-    const asset_id = newActiveProject.media[0]._key
-    const asset_index = 0
-
-    setActive(newActiveProject, asset_id, asset_index, newActiveProjectIndex)
-    if (newActiveProject?.slug?.current) {
-      navigate(`/work/${newActiveProject?.slug?.current}`)
-    } else {
-      closeProject()
-    }
-  }
-
-  function showPreviousSlide() {
-    const newSlideIndex = state.activeAssetIndex - 1
-
-    setState(state => ({
-      ...state,
-      activeAssetIndex: newSlideIndex,
-      activeAssetID: state.activeProject.media[newSlideIndex]._key,
-    }))
-  }
-
-  function updateVisibleContent(direction) {
-    const { activeAssetIndex, activeProject, isDescriptionVisible } = state
+  const showNext = useCallback(() => {
+    const { activeAssetIndex, activeProject } = state
     if (activeAssetIndex === null || !activeProject) return false
+
     const { media } = activeProject
-    if (direction === "next") {
-      // if last slide, load next project, otherwise show next slide
-      if (activeAssetIndex === media?.length - 1 || isDescriptionVisible) {
-        showNextProject()
-      } else {
-        showNextSlide()
-      }
+
+    function showNextProject() {
+      const { activeProjectIndex } = state
+      if (activeProjectIndex === null || !data?.projects?.all) return false
+
+      const isLastProjectInArray =
+        state.activeProjectIndex === data?.projects?.all.length - 1
+      const newActiveProjectIndex = isLastProjectInArray
+        ? 0
+        : activeProjectIndex + 1
+
+      updateActiveProject(newActiveProjectIndex)
     }
 
-    if (direction === "prev") {
-      // if first slide, load previous project, otherwise show previous slide
-      if (activeAssetIndex == 0 || isDescriptionVisible) {
-        showPreviousProject()
-      } else {
-        showPreviousSlide()
-      }
+    function showNextSlide() {
+      const newSlideIndex = state.activeAssetIndex + 1
+      setState(state => ({
+        ...state,
+        activeAssetIndex: newSlideIndex,
+        activeAssetID: state.activeProject.media[newSlideIndex]._key,
+      }))
     }
-  }
 
-  function showNext() {
-    updateVisibleContent("next")
-  }
+    // if last slide, load next project, otherwise show next slide
+    if (activeAssetIndex === media?.length - 1) {
+      showNextProject()
+    } else {
+      showNextSlide()
+    }
+  }, [updateActiveProject, data, state])
 
-  function showPrevious() {
-    updateVisibleContent("prev")
-  }
+  const showPrevious = useCallback(() => {
+    const { activeAssetIndex, activeProject } = state
+    if (activeAssetIndex === null || !activeProject) return false
 
-  function setDescription() {}
+    function showPreviousProject() {
+      const { activeProjectIndex } = state
+      const projects = data?.projects?.all
+      if (activeProjectIndex === null || !projects) return false
 
-  useEffect(() => {}, [state])
+      const isFirstProjectInArray = state.activeProjectIndex === 0
+      const newActiveProjectIndex = isFirstProjectInArray
+        ? projects.length - 1
+        : activeProjectIndex - 1
+
+      updateActiveProject(newActiveProjectIndex)
+    }
+
+    function showPreviousSlide() {
+      const newSlideIndex = state.activeAssetIndex - 1
+
+      setState(state => ({
+        ...state,
+        activeAssetIndex: newSlideIndex,
+        activeAssetID: state.activeProject.media[newSlideIndex]._key,
+      }))
+    }
+
+    // if first slide, load previous project, otherwise show previous slide
+    if (activeAssetIndex === 0) {
+      showPreviousProject()
+    } else {
+      showPreviousSlide()
+    }
+  }, [updateActiveProject, data, state])
+
+  const onKeyDown = useCallback(
+    ({ keyCode }) => {
+      switch (keyCode) {
+        case 39:
+          showNext()
+          break
+        case 37:
+          showPrevious()
+          break
+        case 27:
+          closeProject()
+          break
+        default:
+          return false
+      }
+    },
+    [showNext, showPrevious, closeProject]
+  )
+
+  useEffect(() => {
+    document.addEventListener("keydown", onKeyDown)
+    return function cleanup() {
+      document.removeEventListener("keydown", onKeyDown)
+    }
+  }, [onKeyDown])
 
   return (
     <SiteContext.Provider
@@ -180,10 +189,7 @@ export const SiteContextProvider = ({ children }) => {
         state,
         data,
         setActive,
-        setDescription,
         closeProject,
-        showDescription,
-        hideDescription,
         showNext,
         showPrevious,
       }}

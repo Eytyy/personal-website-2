@@ -17,9 +17,11 @@ const ProjectPreview = props => {
     navigate(`/work/${slug?.current}`)
   }
 
+  const mediaItems = media.filter(({ _type }) => _type !== "contentBlockSimple")
+
   return (
-    media &&
-    media.map(({ _type, _key, ...props }, index) => {
+    mediaItems &&
+    mediaItems.map(({ _type, _key, ...props }, index) => {
       return (
         <ProjectElement
           href={`/work/${slug?.current}`}

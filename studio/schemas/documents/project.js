@@ -39,8 +39,7 @@ export default {
     {
       name: 'mainMedia',
       type: 'gallery',
-      title: 'Main Media',
-      description: 'Upload one or more video or image.',
+      title: 'Content',
     },
     {
       name: 'description',

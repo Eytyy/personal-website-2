@@ -13,6 +13,11 @@ export default {
         "The section name is for structure organization purposes, and won't be displayed on the frontend.",
     },
     {
+      name: 'useAsHeadline',
+      title: 'Use Name as Headline',
+      type: 'boolean',
+    },
+    {
       name: 'content',
       type: 'blockContentSimple',
       title: 'Content',

@@ -12,42 +12,37 @@ import {
 } from "./styles"
 
 const Project = props => {
-  const { description, media, title } = props
+  const { media, title } = props
   const { state, setActive } = useSiteContext()
 
   const asset =
     media?.find(({ _key }) => _key === state?.activeAssetID) || media?.[0]
 
+  const { activeAssetID, activeProject } = state
   useEffect(() => {
-    if (!state?.activeAssetID) {
+    if (!activeAssetID && activeProject) {
       setActive({ ...props }, media[0]._id, 0)
     }
-  }, [])
+  }, [activeProject, activeAssetID, , props, media, setActive])
 
-  if (!asset && !state?.isDescriptionVisible) {
-    return null
-  }
-
+  if (!asset) return null
   return (
-    <ProjectDetailsWrapper
-      type={asset._type}
-      isDescriptionVisible={state.isDescriptionVisible}
-    >
-      <MainTitle isDescriptionVisible={state.isDescriptionVisible}>
-        {title}
-      </MainTitle>
-      {state.isDescriptionVisible && description ? (
+    <ProjectDetailsWrapper type={asset._type}>
+      <MainTitle>{title}</MainTitle>
+      {asset?._type === "contentBlockSimple" ? (
         <ProjecDescriptionWrapper>
           <ProjecDescriptionInner>
-            <PortableText blocks={description} />
+            <PortableText blocks={asset.content} />
           </ProjecDescriptionInner>
         </ProjecDescriptionWrapper>
       ) : (
         <ProjecMediaWrapper>
           <Media {...asset} />
           <Caption type={asset?._type}>
-            {`${state?.activeAssetIndex + 1} of ${media?.length - 1}: ${
-              asset.alt || "untitled"
+            {`${state?.activeAssetIndex + 1}/${media?.length - 1 || 1}: ${
+              asset?._type === "figure"
+                ? asset.caption || "untitled"
+                : asset.posterFrame.caption || "untitled"
             }`}
           </Caption>
         </ProjecMediaWrapper>

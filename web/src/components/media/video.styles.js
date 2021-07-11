@@ -1,6 +1,5 @@
 import styled from "@emotion/styled"
 import { at, breakpoints } from "../../styles/utils"
-import { css } from "@emotion/core"
 
 export const MediaButton = styled.button`
   background: none;

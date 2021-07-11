@@ -11,12 +11,11 @@ export const ProjectHeader = styled.header`
 
 export const ProjectElement = styled.a``
 
-export const MainTitle = styled.h2`
+export const MainTitle = styled.h1`
   text-transform: lowercase;
   letter-spacing: 0.035em;
   font-size: 24px;
-  padding: ${({ isDescriptionVisible }) =>
-    isDescriptionVisible ? "2px 0px 0px 0px" : " 2px 52px 0px"};
+  padding: 2px 52px 0px;
   ${at(breakpoints.tablet)} {
     padding: 8px 0px 0px 0px;
   }
@@ -25,14 +24,9 @@ export const MainTitle = styled.h2`
 export const ProjectDetailsWrapper = styled.article`
   position: fixed;
   height: var(--app-height);
-  width: ${({ isDescriptionVisible }) =>
-    isDescriptionVisible ? "100%" : "100vw"};
-  padding: ${({ isDescriptionVisible, type }) =>
-    type === "SanityVideoEmbed"
-      ? "52px"
-      : isDescriptionVisible
-      ? "10px 52px 0px"
-      : "10px 0px 62px"};
+  width: 100vw;
+  padding: ${({ type }) =>
+    type === "SanityVideoEmbed" ? "52px" : "10px 0px 62px"};
   top: 0px;
   left: 0px;
   z-index: 10;
@@ -49,13 +43,9 @@ export const ProjectDetailsWrapper = styled.article`
   ${at(breakpoints.tablet)} {
     font-size: 52px;
     left: 85px;
-    height: ${({ isDescriptionVisible }) =>
-      isDescriptionVisible
-        ? "var(--app-height)"
-        : " calc(var(--app-height) - 85px)"};
+    height: var(--app-height);
     top: 0px;
-    padding: ${({ isDescriptionVisible }) =>
-      isDescriptionVisible ? "20px 0px 0px" : "20px 0px 85px"};
+    padding: 20px 0px 85px;
     margin-bottom: 0px;
     width: calc(100vw - 170px);
 

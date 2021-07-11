@@ -1,5 +1,4 @@
 import React from "react"
-import Figure from "../media/figure"
 import Gif from "./gif"
 import Headline from "./headline"
 import Text from "./text"
