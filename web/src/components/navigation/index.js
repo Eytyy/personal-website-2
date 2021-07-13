@@ -6,7 +6,6 @@ import { MainNavigation, NavigationItem } from "./styles"
 
 const Navigation = () => {
   const { state, closeProject, showNext, showPrevious } = useSiteContext()
-  console.log(state)
   return (
     <MainNavigation>
       {state?.activeProject && (
