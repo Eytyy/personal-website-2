@@ -31,7 +31,7 @@ const Layout = ({ children, location }) => {
         <Navigation />
         <Global />
         <main>{children}</main>
-        {location.pathname === "/" && <Footer />}
+        {location?.pathname === "/" && <Footer />}
       </LayoutWrapper>
     </>
   )
