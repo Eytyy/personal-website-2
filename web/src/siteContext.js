@@ -44,6 +44,7 @@ export const SiteContextProvider = ({ children }) => {
   }))
 
   const closeProject = useCallback(() => {
+    console.log("close")
     navigate("/")
     setState(state => ({
       ...state,

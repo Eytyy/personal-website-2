@@ -19,13 +19,15 @@ const Project = props => {
     media?.find(({ _key }) => _key === state?.activeAssetID) || media?.[0]
 
   const { activeAssetID, activeProject } = state
+
   useEffect(() => {
-    if (!activeAssetID && activeProject) {
-      setActive({ ...props }, media[0]._id, 0)
+    if (!activeAssetID && activeProject && media[0]?._key) {
+      setActive({ ...props }, media[0]._key, 0)
     }
-  }, [activeProject, activeAssetID, , props, media, setActive])
+  }, [activeProject, activeAssetID, props, media, setActive])
 
   if (!asset) return null
+
   return (
     <ProjectDetailsWrapper type={asset._type}>
       <MainTitle>{title}</MainTitle>
