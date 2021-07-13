@@ -18,13 +18,9 @@ const Project = props => {
   const asset =
     media?.find(({ _key }) => _key === state?.activeAssetID) || media?.[0]
 
-  const { activeAssetID, activeProject } = state
-
   useEffect(() => {
-    if (!activeAssetID && activeProject && media[0]?._key) {
-      setActive({ ...props }, media[0]._key, 0)
-    }
-  }, [activeProject, activeAssetID, props, media, setActive])
+    setActive({ ...props }, media[0]._key, 0)
+  }, [props, media, setActive])
 
   if (!asset) return null
 

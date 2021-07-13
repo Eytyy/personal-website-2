@@ -44,7 +44,6 @@ export const SiteContextProvider = ({ children }) => {
   }))
 
   const closeProject = useCallback(() => {
-    console.log("close")
     navigate("/")
     setState(state => ({
       ...state,
@@ -70,32 +69,16 @@ export const SiteContextProvider = ({ children }) => {
     [data]
   )
 
-  const updateActiveProject = useCallback(
-    newActiveProjectIndex => {
-      const projects = data?.projects?.all
-      const newActiveProject = projects[newActiveProjectIndex]
-      const asset_index = 0
-      const asset_id = newActiveProject.media[0]._key
-
-      setActive(newActiveProject, asset_id, asset_index, newActiveProjectIndex)
-      if (newActiveProject?.slug?.current) {
-        navigate(`/work/${newActiveProject?.slug?.current}`)
-      } else {
-        closeProject()
-      }
-    },
-    [closeProject, setActive, data]
-  )
-
   const showNext = useCallback(() => {
     const { activeAssetIndex, activeProject } = state
-    if (activeAssetIndex === null || !activeProject) return false
+    const projects = data?.projects?.all
+
+    if (!projects || activeAssetIndex === null || !activeProject) return false
 
     const { media } = activeProject
 
     function showNextProject() {
       const { activeProjectIndex } = state
-      if (activeProjectIndex === null || !data?.projects?.all) return false
 
       const isLastProjectInArray =
         state.activeProjectIndex === data?.projects?.all.length - 1
@@ -103,7 +86,13 @@ export const SiteContextProvider = ({ children }) => {
         ? 0
         : activeProjectIndex + 1
 
-      updateActiveProject(newActiveProjectIndex)
+      const newActiveProject = projects[newActiveProjectIndex]
+
+      if (newActiveProject?.slug?.current) {
+        navigate(`/work/${newActiveProject?.slug?.current}`)
+      } else {
+        closeProject()
+      }
     }
 
     function showNextSlide() {
@@ -121,23 +110,29 @@ export const SiteContextProvider = ({ children }) => {
     } else {
       showNextSlide()
     }
-  }, [updateActiveProject, data, state])
+  }, [closeProject, data, state])
 
   const showPrevious = useCallback(() => {
     const { activeAssetIndex, activeProject } = state
-    if (activeAssetIndex === null || !activeProject) return false
+    const projects = data?.projects?.all
+
+    if (!projects || activeAssetIndex === null || !activeProject) return false
 
     function showPreviousProject() {
       const { activeProjectIndex } = state
-      const projects = data?.projects?.all
-      if (activeProjectIndex === null || !projects) return false
 
       const isFirstProjectInArray = state.activeProjectIndex === 0
       const newActiveProjectIndex = isFirstProjectInArray
         ? projects.length - 1
         : activeProjectIndex - 1
 
-      updateActiveProject(newActiveProjectIndex)
+      const newActiveProject = projects[newActiveProjectIndex]
+
+      if (newActiveProject?.slug?.current) {
+        navigate(`/work/${newActiveProject?.slug?.current}`)
+      } else {
+        closeProject()
+      }
     }
 
     function showPreviousSlide() {
@@ -156,7 +151,7 @@ export const SiteContextProvider = ({ children }) => {
     } else {
       showPreviousSlide()
     }
-  }, [updateActiveProject, data, state])
+  }, [closeProject, data, state])
 
   const onKeyDown = useCallback(
     ({ keyCode }) => {
