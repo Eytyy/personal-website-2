@@ -5,6 +5,7 @@ import Global from "../../styles/Global.js"
 import { LayoutWrapper } from "./styles.js"
 import Header from "../header/index.js"
 import Navigation from "../navigation/index.js"
+import Footer from "../footer/index.js"
 
 const Layout = ({ children, location }) => {
   // alternative way to using full view port height instead of 100vh
@@ -21,6 +22,8 @@ const Layout = ({ children, location }) => {
     }
   }, [])
 
+  console.log(location)
+
   return (
     <>
       <LayoutWrapper>
@@ -28,6 +31,7 @@ const Layout = ({ children, location }) => {
         <Navigation />
         <Global />
         <main>{children}</main>
+        {location.pathname === "/" && <Footer />}
       </LayoutWrapper>
     </>
   )

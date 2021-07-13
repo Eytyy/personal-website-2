@@ -1,32 +1,32 @@
 import React from "react"
-import { ContactLink } from "./Contact.styles"
+import { ContactLink, ContactWrapper } from "./styles"
 
-const ContactSimple = () => {
+const Contact = () => {
   return (
-    <div>
+    <ContactWrapper>
       <ContactLink
         target="_blank"
         rel="noopener noreferrer"
         href="mailto:e.tayyem@gmail.com"
       >
-        send an email
+        email
       </ContactLink>
       <ContactLink
         target="_blank"
         rel="noopener noreferrer"
         href="tel:00962796659649"
       >
-        call me
+        mobile
       </ContactLink>
       <ContactLink
         target="_blank"
         rel="noopener noreferrer"
         href="https://github.com/Eytyy"
       >
-        gitHUBz
+        github
       </ContactLink>
-    </div>
+    </ContactWrapper>
   )
 }
 
-export default ContactSimple
+export default Contact
