@@ -22,8 +22,6 @@ const Layout = ({ children, location }) => {
     }
   }, [])
 
-  console.log(location)
-
   return (
     <>
       <LayoutWrapper>

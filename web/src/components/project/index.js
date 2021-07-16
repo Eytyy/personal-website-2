@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useRef } from "react"
 import { useSiteContext } from "../../siteContext"
 import Media from "../media/media"
 import PortableText from "../PortableText"
@@ -12,16 +12,21 @@ import {
 } from "./styles"
 
 const Project = props => {
-  const { media, title } = props
-  const { state, setActive } = useSiteContext()
-
-  const asset =
-    media?.find(({ _key }) => _key === state?.activeAssetID) || media?.[0]
+  const { media, title, id } = props
+  const { state, setActiveProject } = useSiteContext()
+  const { activeAssetID } = state
+  const loaded = useRef(false)
 
   useEffect(() => {
-    setActive({ ...props }, media[0]._key, 0)
-  }, [props, media, setActive])
+    if (!loaded.current) {
+      loaded.current = true
+      setActiveProject({
+        projectID: id,
+      })
+    }
+  }, [id, setActiveProject])
 
+  const asset = media?.find(({ _key }) => _key === activeAssetID) || media?.[0]
   if (!asset) return null
 
   return (
@@ -37,7 +42,7 @@ const Project = props => {
         <ProjecMediaWrapper>
           <Media {...asset} />
           <Caption type={asset?._type}>
-            {`${state?.activeAssetIndex + 1}/${media?.length - 1 || 1}: ${
+            {`${state?.activeAssetIndex + 1}/${media?.length || 1}: ${
               asset?._type === "figure"
                 ? asset.caption || "untitled"
                 : asset.posterFrame.caption || "untitled"

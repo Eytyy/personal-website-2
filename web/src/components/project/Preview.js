@@ -7,36 +7,32 @@ import VideoThumb from "../media/videoThumb"
 import { ProjectElement } from "./styles"
 
 const ProjectPreview = props => {
-  const { media, slug } = props
+  const { media, slug, id } = props
 
   const { setActive } = useSiteContext()
 
-  const handleClick = (event, asset_id, asset_index) => {
+  const handleClick = (event, assetID, assetIndex) => {
     event.preventDefault()
-    setActive({ ...props }, asset_id, asset_index)
+    setActive({ projectID: id, assetID, assetIndex })
+
     navigate(`/work/${slug?.current}`)
   }
 
-  const mediaItems = media.filter(({ _type }) => _type !== "contentBlockSimple")
-
-  return (
-    mediaItems &&
-    mediaItems.map(({ _type, _key, ...props }, index) => {
-      return (
-        <ProjectElement
-          href={`/work/${slug?.current}`}
-          onClick={event => handleClick(event, _key, index)}
-          key={_key}
-        >
-          {_type === "figure" ? (
-            <Figure width="400" image={props} />
-          ) : (
-            <VideoThumb {...props} />
-          )}
-        </ProjectElement>
-      )
-    })
-  )
+  return media?.map(({ _type, _key, ...props }, index) => {
+    return _type !== "contentBlockSimple" ? (
+      <ProjectElement
+        href={`/work/${slug?.current}`}
+        onClick={event => handleClick(event, _key, index)}
+        key={_key}
+      >
+        {_type === "figure" ? (
+          <Figure width="400" image={props} />
+        ) : (
+          <VideoThumb {...props} />
+        )}
+      </ProjectElement>
+    ) : null
+  })
 }
 
 export default ProjectPreview
