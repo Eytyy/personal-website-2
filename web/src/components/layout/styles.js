@@ -10,6 +10,11 @@ export const LayoutWrapper = styled.div`
   }
 `
 
+export const PresentationLayoutWrapper = styled.div`
+  height: var(--app-height);
+  overflow-y: scroll;
+`
+
 export const PageHeader = styled.header`
   margin-bottom: 2em;
 `

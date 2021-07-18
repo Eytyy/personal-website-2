@@ -2,6 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import GraphQLErrorList from "../components/graphql-error-list"
 import Project from "../components/project"
+import Layout from "../components/layout"
 
 export const query = graphql`
   query GetProject($id: String!) {
@@ -40,7 +41,11 @@ const ProjectTemplate = ({ data, errors }) => {
     return <GraphQLErrorList errors={errors} />
   }
 
-  return <Project {...project} />
+  return (
+    <Layout>
+      <Project {...project} />
+    </Layout>
+  )
 }
 
 export default ProjectTemplate

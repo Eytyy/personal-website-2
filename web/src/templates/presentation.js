@@ -1,6 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Presentation from "../components/presentation"
+import PresentationLayout from "../components/layout/PresentationLayout"
 
 export const query = graphql`
   query GetPresentation($id: String!) {
@@ -15,7 +16,11 @@ export const query = graphql`
 `
 const PresentationTemplate = ({ data }) => {
   const presentation = data && data.presentation
-  return <Presentation {...presentation} />
+  return (
+    <PresentationLayout>
+      <Presentation {...presentation} />
+    </PresentationLayout>
+  )
 }
 
 export default PresentationTemplate

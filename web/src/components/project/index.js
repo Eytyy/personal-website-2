@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react"
+import React, { useCallback, useEffect, useRef } from "react"
 import { useSiteContext } from "../../siteContext"
 import Media from "../media/media"
 import PortableText from "../PortableText"
@@ -13,7 +13,13 @@ import {
 
 const Project = props => {
   const { media, title, id } = props
-  const { state, setActiveProject } = useSiteContext()
+  const {
+    state,
+    setActiveProject,
+    showNext,
+    showPrevious,
+    closeProject,
+  } = useSiteContext()
   const { activeAssetID } = state
   const loaded = useRef(false)
 
@@ -25,6 +31,32 @@ const Project = props => {
       })
     }
   }, [id, setActiveProject])
+
+  const onKeyDown = useCallback(
+    ({ keyCode }) => {
+      switch (keyCode) {
+        case 39:
+          showNext()
+          break
+        case 37:
+          showPrevious()
+          break
+        case 27:
+          closeProject()
+          break
+        default:
+          return false
+      }
+    },
+    [showNext, showPrevious, closeProject]
+  )
+
+  useEffect(() => {
+    document.addEventListener("keydown", onKeyDown)
+    return function cleanup() {
+      document.removeEventListener("keydown", onKeyDown)
+    }
+  }, [onKeyDown])
 
   const asset = media?.find(({ _key }) => _key === activeAssetID) || media?.[0]
   if (!asset) return null

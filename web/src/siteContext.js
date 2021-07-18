@@ -186,32 +186,6 @@ export const SiteContextProvider = ({ children, ...props }) => {
     [setActiveProject, data, state]
   )
 
-  const onKeyDown = useCallback(
-    ({ keyCode }) => {
-      switch (keyCode) {
-        case 39:
-          showNext()
-          break
-        case 37:
-          showPrevious()
-          break
-        case 27:
-          closeProject()
-          break
-        default:
-          return false
-      }
-    },
-    [showNext, showPrevious, closeProject]
-  )
-
-  useEffect(() => {
-    document.addEventListener("keydown", onKeyDown)
-    return function cleanup() {
-      document.removeEventListener("keydown", onKeyDown)
-    }
-  }, [onKeyDown])
-
   return (
     <SiteContext.Provider
       value={{

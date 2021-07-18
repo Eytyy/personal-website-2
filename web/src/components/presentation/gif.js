@@ -3,14 +3,14 @@ import Media from "../media/media"
 import SvgEl from "../media/SvgEl"
 import { PresentationPageWrapper, Deck, PresentationHeader } from "./style"
 
-const Gif = ({ title, content: slides, universalDelay }) => {
+const Gif = ({ title, content: slides, universalDelay, loop }) => {
   const [activeSlide, setActiveSlide] = useState(0)
   const [paused, setPaused] = useState(false)
 
   const animate = useCallback(() => {
     const isLastSlide = activeSlide === slides.length - 1
-    const next = isLastSlide ? activeSlide : activeSlide + 1
-    if (isLastSlide) {
+    const next = isLastSlide ? (loop ? 0 : activeSlide) : activeSlide + 1
+    if (isLastSlide && !loop) {
       setPaused(true)
     }
     setActiveSlide(next)
@@ -18,8 +18,9 @@ const Gif = ({ title, content: slides, universalDelay }) => {
 
   useEffect(() => {
     if (!paused) {
-      const defaultDelay = universalDelay || 60
+      const defaultDelay = universalDelay || 0
       const delay = slides[activeSlide]?.delay || defaultDelay
+
       setTimeout(animate, delay)
     }
     return function cleanup() {
