@@ -28,14 +28,7 @@ export default {
       name: 'content',
       title: 'Content',
       type: 'array',
-      of: [
-        {
-          type: 'gifImage',
-        },
-        {
-          type: 'gifSvg',
-        },
-      ],
+      of: [{type: 'gifImage'}, {type: 'gifSvg'}],
     },
   ],
   preview: {

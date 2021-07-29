@@ -11,6 +11,8 @@ const hiddenDocTypes = (listItem) =>
     'project',
     'page',
     'siteSettings',
+    'gif',
+    'gifSvg',
   ].includes(listItem.getId());
 
 export default () =>

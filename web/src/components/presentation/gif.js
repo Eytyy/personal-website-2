@@ -33,12 +33,12 @@ const Gif = ({ title, content: slides, universalDelay, loop }) => {
       <PresentationHeader>
         {title && <div className="caption">{title}</div>}
       </PresentationHeader>{" "}
-      {slides?.map(({ _type, _key, image, snippet }, index) => (
+      {slides?.map(({ _type, _key, image, snippet, svg }, index) => (
         <Deck active={index === activeSlide} key={_key}>
           {_type === "gifItem" ? (
             <Media {...image} />
           ) : (
-            <SvgEl markup={snippet} />
+            <SvgEl markup={svg?.code || snippet} />
           )}
         </Deck>
       ))}

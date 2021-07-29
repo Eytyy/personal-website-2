@@ -1,6 +1,6 @@
 export default {
-  title: 'GIF Item SVG',
-  type: 'object',
+  title: 'GIF SVG',
+  type: 'document',
   name: 'gifSvg',
   fields: [
     {
@@ -14,8 +14,14 @@ export default {
       title: 'Delay',
     },
     {
+      name: 'svg',
+      title: 'SVG Reference',
+      type: 'reference',
+      to: [{type: 'svgSnippet'}],
+    },
+    {
       name: 'snippet',
-      title: 'SVG',
+      title: 'SVG Snippet',
       type: 'text',
     },
   ],

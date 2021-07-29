@@ -38,6 +38,7 @@ import externalLink from './objects/externalLink';
 import * as plugs from './plugs';
 import formSubmission from './documents/formSubmission';
 import answers from './objects/answers';
+import svgSnippet from './documents/svgSnippet';
 
 import presentContentBlock from './objects/presentContentBlock';
 import presentImage from './objects/presentImage';
@@ -73,6 +74,7 @@ export default createSchema({
 
       figure,
       svg,
+      svgSnippet,
 
       videoEmbed,
       video,
