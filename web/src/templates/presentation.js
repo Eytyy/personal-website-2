@@ -10,7 +10,7 @@ export const query = graphql`
       title
       scope
       date
-      content: _rawContent(resolveReferences: { maxDepth: 10 })
+      content: _rawContent(resolveReferences: { maxDepth: 15 })
     }
   }
 `

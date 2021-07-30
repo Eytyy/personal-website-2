@@ -1,5 +1,7 @@
 import S from '@sanity/desk-tool/structure-builder';
-import {MdHome, MdTune, MdSubject, MdGrade} from 'react-icons/md';
+import {MdHome, MdTune, MdSubject, MdGrade, MdGif} from 'react-icons/md';
+import {RiProjector2Fill} from 'react-icons/ri';
+import {ImSvg} from 'react-icons/im';
 import navigation from './src/structure/navigation';
 import PreviewIFrame from './src/components/previewIFrame';
 
@@ -9,10 +11,12 @@ const hiddenDocTypes = (listItem) =>
     'navigationMenu',
     'post',
     'project',
+    'presentation',
     'page',
     'siteSettings',
     'gif',
     'gifSvg',
+    'svgSnippet',
   ].includes(listItem.getId());
 
 export default () =>
@@ -64,6 +68,45 @@ export default () =>
             .child((documentId) =>
               S.document(documentId)
                 .schemaType('post')
+                .views([S.view.form(), PreviewIFrame()])
+            )
+        ),
+
+      S.listItem('presentation')
+        .icon(RiProjector2Fill)
+        .title('Presentations')
+        .child(
+          S.documentTypeList('presentation')
+            .title('Presentations')
+            .child((documentId) =>
+              S.document(documentId)
+                .schemaType('presentation')
+                .views([S.view.form(), PreviewIFrame()])
+            )
+        ),
+
+      S.listItem('gif')
+        .icon(MdGif)
+        .title('Gifs')
+        .child(
+          S.documentTypeList('gif')
+            .title('Gifs')
+            .child((documentId) =>
+              S.document(documentId)
+                .schemaType('gif')
+                .views([S.view.form(), PreviewIFrame()])
+            )
+        ),
+
+      S.listItem('svgSnippet')
+        .icon(ImSvg)
+        .title('SVG Snippets')
+        .child(
+          S.documentTypeList('svgSnippet')
+            .title('SVG Snippets')
+            .child((documentId) =>
+              S.document(documentId)
+                .schemaType('svgSnippet')
                 .views([S.view.form(), PreviewIFrame()])
             )
         ),

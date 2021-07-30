@@ -1,5 +1,6 @@
 import css from "@emotion/css"
 import styled from "@emotion/styled"
+import { at, breakpoints, spacing } from "../../styles/utils"
 import { fonts } from "../../styles/vars"
 
 export const ImageWrapper = styled.div`
@@ -28,6 +29,10 @@ export const PresentationWrapper = styled.div`
 export const PresentationPageWrapper = styled.div`
   position: relative;
   height: 100%;
+  width: 100%;
+`
+export const GridPage = styled.div`
+  position: relative;
   width: 100%;
 `
 
@@ -132,4 +137,27 @@ export const PresentationFooter = styled.footer`
   width: 100%;
   padding: 20px;
   z-index: 2;
+`
+
+export const GridWrapper = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  ${at(breakpoints.bigscreen)} {
+    grid-template-columns: repeat(3, 1fr);
+  }
+`
+
+export const GridBlock = styled.div`
+  position: relative;
+  ${PresentationHeader} {
+    position: absolute;
+    font-size: 0.5em;
+    bottom: 0;
+    left: 0;
+  }
 `

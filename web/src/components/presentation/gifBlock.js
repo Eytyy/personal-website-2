@@ -4,16 +4,13 @@ import Media from "../media/media"
 import SvgEl from "../media/SvgEl"
 import { PresentationPageWrapper, Deck, PresentationHeader } from "./style"
 
-const Gif = ({ title, content: slides, universalDelay, loop, displayType }) => {
+const GifBlock = ({ content: slides, universalDelay, loop, displayType }) => {
   if (!slides) return null
 
   const { activeSlide } = UseGif({ slides, universalDelay, loop })
 
   return (
     <PresentationPageWrapper>
-      <PresentationHeader>
-        {title && <div className="caption">{title}</div>}
-      </PresentationHeader>{" "}
       {slides?.map(({ _type, _key, image, snippet, svg }, index) => (
         <Deck
           displayType={displayType}
@@ -31,4 +28,4 @@ const Gif = ({ title, content: slides, universalDelay, loop, displayType }) => {
   )
 }
 
-export default Gif
+export default GifBlock

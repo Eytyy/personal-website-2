@@ -1,5 +1,3 @@
-import {mq} from '../../../web/src/styles/utils';
-
 export default {
   title: 'Presentation',
   type: 'document',
@@ -7,6 +5,19 @@ export default {
   fields: [
     {
       name: 'title',
+      type: 'string',
+      title: 'Title',
+    },
+    {
+      name: 'slug',
+      type: 'slug',
+      title: 'Slug',
+      options: {
+        source: 'title',
+      },
+    },
+    {
+      name: 'client',
       type: 'string',
       title: 'Client',
     },
@@ -35,7 +46,17 @@ export default {
           type: 'presentImage',
         },
         {
+          type: 'presentGrid',
+          title: 'Grid',
+        },
+        {
           type: 'gif',
+          title: 'GIF',
+        },
+        {
+          type: 'reference',
+          title: 'GIF Ref.',
+          to: [{type: 'gif'}],
         },
         {
           type: 'svg',

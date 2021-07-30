@@ -47,6 +47,9 @@ async function createPresentations(
       allSanityPresentation {
         nodes {
           id
+          slug {
+            current
+          }
         }
       }
     }
@@ -56,8 +59,8 @@ async function createPresentations(
 
   const pres = (result.data.allSanityPresentation || {}).nodes || []
   pres.forEach(presPost => {
-    const { id } = presPost
-    const path = `${pathPrefix}/${id}/`
+    const { id, slug = {} } = presPost
+    const path = [pathPrefix, slug.current, "/"].join("")
     reporter.info(`Creating Presentation: ${path}`)
     createPage({
       path,
@@ -105,5 +108,5 @@ async function createProjects(
 exports.createPages = async ({ graphql, actions, reporter }) => {
   await createLandingPages("/", graphql, actions, reporter)
   await createProjects("/work/", graphql, actions, reporter)
-  await createPresentations("/presentations", graphql, actions, reporter)
+  await createPresentations("/presentations/", graphql, actions, reporter)
 }

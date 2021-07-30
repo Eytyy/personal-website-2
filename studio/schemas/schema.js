@@ -44,6 +44,7 @@ import presentContentBlock from './objects/presentContentBlock';
 import presentImage from './objects/presentImage';
 import presentText from './objects/presentText';
 import presentHeadline from './objects/presentHeadline';
+import presentGrid from './objects/presentGrid';
 
 const allPlugs = Object.values(plugs).map((plug) => {
   return plug;
@@ -71,6 +72,7 @@ export default createSchema({
       presentImage,
       presentText,
       presentHeadline,
+      presentGrid,
 
       figure,
       svg,

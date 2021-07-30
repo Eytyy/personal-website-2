@@ -56,7 +56,7 @@ const Presentation = ({ content: presentation, title, scope, date }) => {
       {onCoverPage ? (
         <Cover title={title} scope={scope} date={date} />
       ) : (
-        <PresentationPage key={content._key} {...content} />
+        <PresentationPage key={content.id} {...content} />
       )}
     </PresentationWrapper>
   )

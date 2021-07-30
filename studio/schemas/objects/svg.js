@@ -1,7 +1,9 @@
+import {ImSvg} from 'react-icons/im';
 export default {
   name: 'svg',
   type: 'object',
   title: 'SVG',
+  icon: ImSvg,
   fields: [
     {
       name: 'code',
