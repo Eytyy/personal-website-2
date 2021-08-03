@@ -8,10 +8,10 @@ async function createLandingPages(
   const result = await graphql(`
     {
       allSanityRoute(
-        filter: { slug: { current: { ne: null } }, page: { id: { ne: null } } }
+        filter: { slug: { current: { ne: null } }, page: { _id: { ne: null } } }
       ) {
         nodes {
-          id
+          _id
           slug {
             current
           }
@@ -24,13 +24,13 @@ async function createLandingPages(
 
   const routes = (result.data.allSanityRoute || {}).nodes || []
   routes.forEach(route => {
-    const { id, slug = {} } = route
+    const { _id, slug = {} } = route
     const path = [pathPrefix, slug.current, "/"].join("")
     reporter.info(`Creating landing page: ${path}`)
     createPage({
       path,
       component: require.resolve("./src/templates/page.js"),
-      context: { id },
+      context: { id: _id },
     })
   })
 }
@@ -46,7 +46,7 @@ async function createPresentations(
     {
       allSanityPresentation {
         nodes {
-          id
+          _id
           slug {
             current
           }
@@ -59,13 +59,13 @@ async function createPresentations(
 
   const pres = (result.data.allSanityPresentation || {}).nodes || []
   pres.forEach(presPost => {
-    const { id, slug = {} } = presPost
+    const { _id, slug = {} } = presPost
     const path = [pathPrefix, slug.current, "/"].join("")
     reporter.info(`Creating Presentation: ${path}`)
     createPage({
       path,
       component: require.resolve("./src/templates/presentation.js"),
-      context: { id },
+      context: { id: _id },
     })
   })
 }
@@ -81,7 +81,7 @@ async function createProjects(
     {
       allSanityProject {
         nodes {
-          id
+          _id
           slug {
             current
           }
@@ -94,13 +94,13 @@ async function createProjects(
 
   const projects = (result.data.allSanityProject || {}).nodes || []
   projects.forEach(project => {
-    const { id, slug = {} } = project
+    const { _id, slug = {} } = project
     const path = [pathPrefix, slug.current, "/"].join("")
     reporter.info(`Creating Project: ${path}`)
     createPage({
       path,
       component: require.resolve("./src/templates/project.js"),
-      context: { id },
+      context: { id: _id },
     })
   })
 }

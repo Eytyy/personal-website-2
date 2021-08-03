@@ -1,11 +1,13 @@
 require("dotenv").config({
-  path: `.env.${process.env.NODE_ENV || "development"}`,
+  path: process.env.STAGING
+    ? `.env.${process.env.NODE_ENV}.staging`
+    : `.env.${process.env.NODE_ENV || "development"}`,
 })
 
 const clientConfig = require("./client-config")
 
 const isProd = process.env.NODE_ENV === "production"
-
+console.log(isProd)
 module.exports = {
   siteMetadata: {
     title: `Eytyy`,
@@ -13,6 +15,10 @@ module.exports = {
     author: `@eytyy`,
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-create-client-paths`,
+      options: { prefixes: [`/preview/*`] },
+    },
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {

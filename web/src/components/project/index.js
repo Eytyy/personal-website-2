@@ -12,7 +12,7 @@ import {
 } from "./styles"
 
 const Project = props => {
-  const { media, title, id } = props
+  const { content, title, id } = props
   const {
     state,
     setActiveProject,
@@ -24,6 +24,7 @@ const Project = props => {
   const loaded = useRef(false)
 
   useEffect(() => {
+    console.log(id)
     if (!loaded.current) {
       loaded.current = true
       setActiveProject({
@@ -58,7 +59,8 @@ const Project = props => {
     }
   }, [onKeyDown])
 
-  const asset = media?.find(({ _key }) => _key === activeAssetID) || media?.[0]
+  const asset =
+    content?.find(({ _key }) => _key === activeAssetID) || content?.[0]
   if (!asset) return null
 
   return (
@@ -74,7 +76,7 @@ const Project = props => {
         <ProjecMediaWrapper>
           <Media {...asset} />
           <Caption type={asset?._type}>
-            {`${state?.activeAssetIndex + 1}/${media?.length || 1}: ${
+            {`${state?.activeAssetIndex + 1}/${content?.length || 1}: ${
               asset?._type === "figure"
                 ? asset.caption || "untitled"
                 : asset.posterFrame.caption || "untitled"

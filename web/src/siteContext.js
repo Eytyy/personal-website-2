@@ -22,11 +22,11 @@ const query = graphql`
     projects: allSanityProject {
       all: nodes {
         title
-        id
+        id: _id
         slug {
           current
         }
-        media: _rawMainMedia(resolveReferences: { maxDepth: 10 })
+        content: _rawMainMedia(resolveReferences: { maxDepth: 10 })
         description: _rawDescription(resolveReferences: { maxDepth: 10 })
       }
     }
@@ -78,13 +78,16 @@ export const SiteContextProvider = ({ children, ...props }) => {
       if (!projects) return false
 
       const activeProjectIndex =
-        projectIndex || projects.findIndex(({ id }) => projectID === id)
+        projectIndex ||
+        projects.findIndex(
+          ({ id }) => projectID === id || `drafts.${projectID}` === id
+        )
 
       const activeProject = { ...projects[activeProjectIndex] }
-
+      console.log(projects)
       // First slide
       const activeAssetIndex = 0
-      const activeAssetID = activeProject.media[activeAssetIndex]._key
+      const activeAssetID = activeProject.content[activeAssetIndex]._key
 
       setState(state => ({
         ...state,
@@ -122,18 +125,18 @@ export const SiteContextProvider = ({ children, ...props }) => {
       }
 
       function showNextSlide() {
-        const { media } = activeProject
+        const { content } = activeProject
         const newSlideIndex = activeAssetIndex + 1
 
         setState(state => ({
           ...state,
           activeAssetIndex: newSlideIndex,
-          activeAssetID: media[newSlideIndex]._key,
+          activeAssetID: content[newSlideIndex]._key,
         }))
       }
 
       // if last slide, load next project, otherwise show next slide
-      if (activeAssetIndex === activeProject.media?.length - 1) {
+      if (activeAssetIndex === activeProject.content?.length - 1) {
         showNextProject()
       } else {
         showNextSlide()
@@ -166,13 +169,13 @@ export const SiteContextProvider = ({ children, ...props }) => {
       }
 
       function showPreviousSlide() {
-        const { media } = activeProject
+        const { content } = activeProject
         const newSlideIndex = activeAssetIndex - 1
 
         setState(state => ({
           ...state,
           activeAssetIndex: newSlideIndex,
-          activeAssetID: media[newSlideIndex]._key,
+          activeAssetID: content[newSlideIndex]._key,
         }))
       }
 

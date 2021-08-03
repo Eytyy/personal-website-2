@@ -5,8 +5,8 @@ import PresentationLayout from "../components/layout/PresentationLayout"
 
 export const query = graphql`
   query GetPresentation($id: String!) {
-    presentation: sanityPresentation(id: { eq: $id }) {
-      id
+    presentation: sanityPresentation(_id: { eq: $id }) {
+      id: _id
       title
       scope
       date

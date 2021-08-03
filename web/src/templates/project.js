@@ -6,13 +6,12 @@ import Layout from "../components/layout"
 
 export const query = graphql`
   query GetProject($id: String!) {
-    project: sanityProject(id: { eq: $id }) {
-      id
+    project: sanityProject(_id: { eq: $id }) {
+      id: _id
       title
-      description: _rawDescription(resolveReferences: { maxDepth: 10 })
       role
       link
-      media: _rawMainMedia(resolveReferences: { maxDepth: 10 })
+      content: _rawMainMedia(resolveReferences: { maxDepth: 10 })
       links {
         _key
         name
@@ -34,8 +33,10 @@ export const query = graphql`
     }
   }
 `
-const ProjectTemplate = ({ data, errors }) => {
+const ProjectTemplate = ({ data, errors, pageContext }) => {
   const project = data && data.project
+
+  if (!pageContext.id || !project) return null
 
   if (errors) {
     return <GraphQLErrorList errors={errors} />
